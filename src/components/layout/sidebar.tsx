@@ -61,7 +61,7 @@ export function Sidebar({ isSidebarOpen, toggleSidebar }: { isSidebarOpen: boole
     <aside
       className={cn(
         "hidden md:flex flex-col flex-shrink-0 border-r bg-sidebar text-sidebar-foreground transition-all duration-300 ease-in-out",
-        isSidebarOpen ? "w-80" : "w-20"
+        isSidebarOpen ? "w-72" : "w-20"
       )}
     >
         <div className="flex items-center justify-end h-20 px-4 border-b">
