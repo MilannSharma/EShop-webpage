@@ -49,7 +49,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-4">
                 <p className="text-sm text-muted-foreground">
-                    Powered by Mishh
+                    Powered by mish
                 </p>
             </div>
         </div>
