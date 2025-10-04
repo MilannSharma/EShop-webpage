@@ -13,6 +13,8 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default async function Home() {
   const collectionImage = placeholderImages.placeholderImages.find(p => p.id === 'prod4');
+  const springOfferImage = placeholderImages.placeholderImages.find(p => p.id === 'spring-offer');
+  const winterOfferImage = placeholderImages.placeholderImages.find(p => p.id === 'winter-offer');
 
   const products = await getProducts();
 
@@ -127,6 +129,36 @@ export default async function Home() {
             <CarouselPrevious className="hidden md:flex" />
             <CarouselNext className="hidden md:flex" />
         </Carousel>
+      </section>
+
+      {/* Offers Section */}
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-2 gap-8">
+            {springOfferImage && (
+                <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
+                    <div className="w-1/2 relative aspect-[3/4]">
+                        <Image src={springOfferImage.imageUrl} alt="Spring Collection" fill className="object-cover" data-ai-hint={springOfferImage.imageHint} />
+                    </div>
+                    <div className="w-1/2 flex flex-col items-center text-center p-4">
+                        <p className="text-sm text-primary">20% OFF THE ALL ORDER</p>
+                        <h3 className="text-2xl md:text-3xl font-headline mt-2">Spring Collection</h3>
+                        <Button variant="outline" className="mt-4">Shop Now</Button>
+                    </div>
+                </div>
+            )}
+            {winterOfferImage && (
+                <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
+                     <div className="w-1/2 flex flex-col items-center text-center p-4">
+                        <p className="text-sm text-primary">20% OFF THE ALL ORDER</p>
+                        <h3 className="text-2xl md:text-3xl font-headline mt-2">Winter Collection</h3>
+                        <Button variant="outline" className="mt-4">Shop Now</Button>
+                    </div>
+                    <div className="w-1/2 relative aspect-[3/4]">
+                        <Image src={winterOfferImage.imageUrl} alt="Winter Collection" fill className="object-cover" data-ai-hint={winterOfferImage.imageHint} />
+                    </div>
+                </div>
+            )}
+        </div>
       </section>
 
       {/* Newsletter */}

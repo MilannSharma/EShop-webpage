@@ -41,6 +41,18 @@
       "description": "A roll of vibrant velvet fabric in a deep magenta color.",
       "imageUrl": "https://images.unsplash.com/photo-1738722637230-0d7cbf6c3d36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx2ZWx2ZXQlMjBmYWJyaWN8ZW58MHx8fHwxNzU5NjA1MzY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "velvet fabric"
+    },
+    {
+      "id": "spring-offer",
+      "description": "A smiling woman with long brown hair wearing a black top.",
+      "imageUrl": "https://images.unsplash.com/photo-1692736475357-7c18bfbb808b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3b21hbiUyMHNtaWxpbmd8ZW58MHx8fHwxNzU5NTQ4MjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "winter-offer",
+      "description": "A pensive woman with long blonde hair wearing glasses and a white cardigan.",
+      "imageUrl": "https://images.unsplash.com/photo-1591279963742-9417020b81db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBlbnNpdmV8ZW58MHx8fHwxNzU5NjE0NjkyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman pensive"
     }
   ]
 }
