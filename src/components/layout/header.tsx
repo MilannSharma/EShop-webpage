@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { User, Menu, Search, Heart, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { User, Menu, Search, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/cart/cart-icon';
 import {
@@ -19,15 +19,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { navItems } from '@/lib/nav-data';
-import { cn } from '@/lib/utils';
 
 
 interface HeaderProps {
-    toggleSidebar: () => void;
     isSidebarOpen: boolean;
 }
 
-export function Header({ toggleSidebar, isSidebarOpen }: HeaderProps) {
+export function Header({ isSidebarOpen }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -37,10 +35,6 @@ export function Header({ toggleSidebar, isSidebarOpen }: HeaderProps) {
            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(true)}>
               <Menu className="h-5 w-5" />
               <span className="sr-only">Open Menu</span>
-            </Button>
-            <Button variant="ghost" size="icon" className="hidden md:flex" onClick={toggleSidebar}>
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle Sidebar</span>
             </Button>
 
            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>

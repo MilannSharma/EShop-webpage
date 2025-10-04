@@ -16,9 +16,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   
   return (
     <div className="flex min-h-screen flex-col">
-      <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+      <Header isSidebarOpen={isSidebarOpen} />
       <div className="flex flex-1">
-        <Sidebar isSidebarOpen={isSidebarOpen} />
+        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <MainContent>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {children}
