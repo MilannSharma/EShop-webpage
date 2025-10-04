@@ -5,12 +5,11 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster"
 import { CartProvider } from '@/lib/cart-context';
 import { CurrencyProvider } from '@/lib/currency-context';
-import { SidebarProvider } from '@/lib/sidebar-context';
 import { cn } from '@/lib/utils';
 import { MainContent } from '@/components/layout/main-content';
 
 export const metadata: Metadata = {
-  title: 'Lakshita Creation',
+  title: 'KARA',
   description: 'Exquisite textiles and fabrics for the discerning eye.',
 };
 
@@ -24,13 +23,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
         <CurrencyProvider>
           <CartProvider>
-            <SidebarProvider>
               <div className="flex min-h-screen flex-col">
                 <Header />
                 <MainContent>
@@ -39,7 +37,6 @@ export default function RootLayout({
                 <Footer />
               </div>
               <Toaster />
-            </SidebarProvider>
           </CartProvider>
         </CurrencyProvider>
       </body>

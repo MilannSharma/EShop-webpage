@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { User, Menu } from 'lucide-react';
+import { User, Menu, Search, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/cart/cart-icon';
 import {
@@ -9,39 +9,33 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import CurrencySelector from '../currency/currency-selector';
-import { useSidebar } from '@/lib/sidebar-context';
-import { navItems } from '@/lib/nav-data';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { navItems } from '@/lib/nav-data';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { toggleSidebar } = useSidebar();
 
   return (
-    <header className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-start gap-2 md:gap-4">
+        <div className="flex items-center justify-start md:w-1/3">
            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(true)}>
             <Menu className="h-5 w-5" />
             <span className="sr-only">Open Menu</span>
           </Button>
-          <Button variant="ghost" size="icon" className="hidden md:flex" onClick={toggleSidebar}>
-            <Menu className="h-5 w-5" />
-            <span className="sr-only">Toggle Sidebar</span>
-          </Button>
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground">Lakshita Creation</span>
+            <span className="font-bold font-headline text-2xl text-secondary-foreground tracking-wider">KARA</span>
           </Link>
         </div>
         
-        <nav className="hidden md:flex flex-grow justify-center items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex flex-grow justify-center items-center gap-8 text-sm font-medium">
           {navLinks.map(({ href, label }) => (
             <Link key={href} href={href} className="text-foreground/70 transition-colors hover:text-foreground">
               {label}
@@ -49,25 +43,32 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center justify-end gap-2">
-          <div className="hidden md:flex items-center gap-2">
-            <CurrencySelector />
+        <div className="flex items-center justify-end gap-2 md:w-1/3">
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="#">
+                <Search className="h-5 w-5" />
+                <span className="sr-only">Search</span>
+              </Link>
+            </Button>
             <Button variant="ghost" size="icon" asChild>
               <Link href="/account">
                 <User className="h-5 w-5" />
                 <span className="sr-only">Account</span>
               </Link>
             </Button>
+             <Button variant="ghost" size="icon" asChild>
+              <Link href="#">
+                <Heart className="h-5 w-5" />
+                <span className="sr-only">Wishlist</span>
+              </Link>
+            </Button>
             <CartIcon />
-          </div>
-
-          <div className="md:hidden flex items-center">
-            <CartIcon />
+          
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetContent side="left" className="w-full max-w-sm overflow-y-auto">
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    <span className="font-bold font-headline text-lg text-secondary-foreground">Lakshita Creation</span>
+                    <span className="font-bold font-headline text-lg text-secondary-foreground tracking-wider">KARA</span>
                   </Link>
                   <nav className="flex flex-col gap-4 text-lg font-medium">
                     {navLinks.map(({ href, label }) => (
@@ -119,7 +120,7 @@ export function Header() {
                 </div>
               </SheetContent>
             </Sheet>
-          </div>
+          
         </div>
       </div>
     </header>
@@ -128,5 +129,7 @@ export function Header() {
 
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '#products', label: 'Shop'},
   { href: '/pattern-generator', label: 'AI Pattern Generator' },
+  { href: '/about', label: 'About' },
 ];

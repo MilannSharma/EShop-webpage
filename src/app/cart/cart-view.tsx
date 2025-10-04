@@ -19,7 +19,7 @@ export default function CartView() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center text-center py-20 rounded-lg border-2 border-dashed">
+      <div className="flex flex-col items-center justify-center text-center py-20 rounded-lg">
         <ShoppingBag className="w-16 h-16 text-muted-foreground" />
         <h2 className="mt-6 text-2xl font-semibold">Your cart is empty</h2>
         <p className="mt-2 text-muted-foreground">Looks like you haven't added anything to your cart yet.</p>
@@ -43,7 +43,7 @@ export default function CartView() {
         ))}
       </div>
       <div className="lg:col-span-1 sticky top-24">
-        <Card className="shadow-lg">
+        <Card>
           <CardHeader>
             <CardTitle>Order Summary</CardTitle>
           </CardHeader>
@@ -78,7 +78,7 @@ function CartItemRow({ item, onRemove, onUpdateQuantity }: { item: CartItem, onR
   const { formatPrice } = useCurrency();
   return (
     <div className="flex items-center gap-4">
-      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
+      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden">
         <Image src={item.product.imageUrl} alt={item.product.name} fill className="object-cover" />
       </div>
       <div className="flex-grow">

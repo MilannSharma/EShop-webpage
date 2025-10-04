@@ -7,7 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import type { Product } from '@/lib/types';
 import { useCart } from '@/lib/cart-context';
 import { useCurrency } from '@/lib/currency-context';
-import { ShoppingCart, ShoppingBag } from 'lucide-react';
+import { ShoppingCart, ShoppingBag, Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 interface ProductCardProps {
@@ -19,47 +19,37 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { formatPrice } = useCurrency();
   const router = useRouter();
 
-  const handleBuyNow = () => {
-    addToCart(product);
-    router.push('/checkout');
-  };
-
   return (
-    <Card className="flex flex-col overflow-hidden rounded-lg shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-      <Link href={`/products/${product.id}`} className="group">
-        <CardHeader className="p-0">
-          <div className="relative h-64 w-full">
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              data-ai-hint={product.imageHint}
-            />
-          </div>
-        </CardHeader>
-        <CardContent className="flex-grow p-4">
-          <CardTitle className="text-lg leading-snug group-hover:text-primary">
-            {product.name}
-          </CardTitle>
-        </CardContent>
-      </Link>
-      <CardFooter className="flex flex-col items-start gap-4 p-4 pt-0">
-        <p className="text-xl font-semibold">
-          {formatPrice(product.price)}
-        </p>
-        <div className="w-full grid grid-cols-2 gap-2">
-            <Button variant="outline" onClick={() => addToCart(product)}>
-              <ShoppingCart className="mr-2 h-4 w-4" />
-              Add to Cart
-            </Button>
-            <Button onClick={handleBuyNow}>
-              <ShoppingBag className="mr-2 h-4 w-4" />
-              Buy Now
-            </Button>
+    <div className="group relative">
+      <Link href={`/products/${product.id}`}>
+        <div className="relative aspect-[3/4] w-full overflow-hidden">
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            data-ai-hint={product.imageHint}
+          />
         </div>
-      </CardFooter>
-    </Card>
+      </Link>
+      <div className="mt-4 flex justify-between">
+        <div>
+          <h3 className="text-sm text-foreground">
+            <Link href={`/products/${product.id}`}>
+              <span aria-hidden="true" className="absolute inset-0" />
+              {product.name}
+            </Link>
+          </h3>
+          <p className="mt-1 text-sm text-foreground/60">{product.description.split('.')[0]}</p>
+        </div>
+        <p className="text-sm font-medium text-foreground">{formatPrice(product.price)}</p>
+      </div>
+       <div className="absolute bottom-20 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <Button size="icon" onClick={() => addToCart(product)}>
+          <Plus />
+        </Button>
+      </div>
+    </div>
   );
 }
