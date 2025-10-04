@@ -78,7 +78,7 @@ export function Sidebar() {
       onHoverStart={() => !isLocked && setIsHovered(true)}
       onHoverEnd={() => !isLocked && setIsHovered(false)}
       className={cn(
-        "hidden md:flex flex-col flex-shrink-0 border-r bg-sidebar text-sidebar-foreground"
+        "hidden md:flex flex-col flex-shrink-0 border-r bg-sidebar text-sidebar-foreground font-headline"
       )}
     >
         <div className={cn("flex items-center h-20 px-4 border-b-sidebar-border border-b", isOpen ? "justify-between": "justify-center")}>
