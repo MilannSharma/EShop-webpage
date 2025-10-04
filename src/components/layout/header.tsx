@@ -22,8 +22,8 @@ import {
 
 const Logo = () => (
     <svg
-      width="24"
-      height="32"
+      width="30"
+      height="40"
       viewBox="0 0 100 100"
       className="fill-current"
       xmlns="http://www.w3.org/2000/svg"
@@ -52,12 +52,7 @@ const Logo = () => (
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [hasLoaded, setHasLoaded] = useState(false);
   const { toggleSidebar } = useSidebar();
-
-  useEffect(() => {
-    setHasLoaded(true);
-  }, []);
 
   return (
     <header className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -73,7 +68,7 @@ export function Header() {
           </Button>
           <Link href="/" className="flex items-center gap-0 -ml-2">
             <Logo />
-            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground -ml-1">Lakshita Creation</span>
+            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground -ml-1">akshita Creation</span>
           </Link>
         </div>
         
@@ -86,7 +81,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center justify-end gap-2">
-          <div className="hidden md:flex items-center gap-2">
+          <div className="flex items-center gap-2">
             
             <Button variant="ghost" size="icon" asChild>
               <Link href="/account">
