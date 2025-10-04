@@ -134,21 +134,6 @@ export default async function Home() {
           <Button type="submit">Sign Up</Button>
         </form>
       </section>
-
-      {/* Follow Us */}
-      <section className="text-center py-12">
-        <h2 className="text-3xl font-headline tracking-tight">Follow Us On Instagram</h2>
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-2">
-           {[...Array(5)].map((_, i) => (
-             <div key={i} className="relative aspect-square w-full">
-               <Image src={`https://picsum.photos/seed/${i+10}/400/400`} alt="Instagram post" fill className="object-cover" />
-             </div>
-           ))}
-        </div>
-        <Button asChild variant="outline" className="mt-8">
-            <Link href="#">@lakshita_creation</Link>
-        </Button>
-      </section>
     </div>
   );
 }
