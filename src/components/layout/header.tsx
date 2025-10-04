@@ -36,7 +36,7 @@ function Logo() {
         L
       </text>
       <text 
-        x="13" 
+        x="11" 
         y="58" 
         fontFamily="Playfair Display, serif" 
         fontSize="36" 
@@ -57,7 +57,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
-          <span className="font-headline text-4xl font-bold tracking-tight text-primary">
+          <span className="font-headline text-5xl font-bold tracking-tight text-primary">
             Lakshita Collection
           </span>
         </Link>
