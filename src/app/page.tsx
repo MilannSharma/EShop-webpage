@@ -31,7 +31,7 @@ export default async function Home() {
           <CarouselContent>
             {newCollectionProducts.map((product) => (
               <CarouselItem key={product.id}>
-                <div className="relative aspect-[16/7] w-full">
+                <div className="relative aspect-[4/3] w-full">
                   <Image
                     src={product.imageUrl}
                     alt={product.description}
