@@ -1,35 +1,16 @@
 
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster"
 import { CartProvider } from '@/lib/cart-context';
 import { CurrencyProvider } from '@/lib/currency-context';
-import { MainContent } from '@/components/layout/main-content';
-import { Sidebar } from '@/components/layout/sidebar';
+import AppLayout from './app-layout';
+
 
 export const metadata: Metadata = {
   title: 'Lakshita Creations',
   description: 'Exquisite textiles and fabrics for the discerning eye.',
 };
-
-function AppLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <div className="flex flex-1">
-        <Sidebar />
-        <MainContent>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {children}
-          </div>
-        </MainContent>
-      </div>
-      <Footer />
-    </div>
-  );
-}
 
 export default function RootLayout({
   children,

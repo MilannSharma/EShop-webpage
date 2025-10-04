@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { User, Menu, Search, Heart } from 'lucide-react';
+import { User, Menu, Search, Heart, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/cart/cart-icon';
 import {
@@ -19,21 +19,31 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { navItems } from '@/lib/nav-data';
+import { cn } from '@/lib/utils';
 
-export function Header() {
+
+interface HeaderProps {
+    toggleSidebar: () => void;
+    isSidebarOpen: boolean;
+}
+
+export function Header({ toggleSidebar, isSidebarOpen }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-start md:w-1/3">
+           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(true)}>
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Open Menu</span>
+            </Button>
+            <Button variant="ghost" size="icon" className="hidden md:flex" onClick={toggleSidebar}>
+                {isSidebarOpen ? <PanelLeftClose /> : <PanelLeftOpen />}
+                <span className="sr-only">Toggle Sidebar</span>
+            </Button>
+
            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Open Menu</span>
-                </Button>
-              </SheetTrigger>
               <SheetContent side="left" className="w-full max-w-sm overflow-y-auto">
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>

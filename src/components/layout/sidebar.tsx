@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from "react";
 import { navItems } from '@/lib/nav-data';
 import Link from 'next/link';
+import { cn } from "@/lib/utils";
 
 type MenuItem = { name: string; href: string; icon?: JSX.Element | string };
 
@@ -52,7 +53,7 @@ const Menu = ({ children, items }: { children: React.ReactNode; items: {name: st
   );
 };
 
-export function Sidebar() {
+export function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   const profileRef = useRef<HTMLButtonElement | null>(null);
   const [isProfileActive, setIsProfileActive] = useState(false);
 
@@ -112,7 +113,10 @@ export function Sidebar() {
 
   return (
     <aside
-      className="hidden md:block w-80 flex-shrink-0 border-r bg-sidebar text-sidebar-foreground"
+      className={cn(
+        "hidden md:block flex-shrink-0 border-r bg-sidebar text-sidebar-foreground transition-all duration-300 ease-in-out",
+        isSidebarOpen ? "w-80" : "w-0 overflow-hidden"
+      )}
     >
       <div className="flex flex-col h-full px-4">
           <div className="h-20 flex items-center pl-2">
