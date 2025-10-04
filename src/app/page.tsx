@@ -39,6 +39,10 @@ export default function Home() {
     Autoplay({ delay: 5000, stopOnInteraction: true })
   );
 
+  const offersPlugin = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
+
   return (
     <div className="space-y-16 md:space-y-24">
       {/* Hero Carousel Section */}
@@ -156,32 +160,46 @@ export default function Home() {
         <div className="mb-6 md:mb-8">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Offers</h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-8">
-            {springOfferImage && (
-                <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
-                    <div className="w-1/2 relative aspect-[3/4]">
-                        <Image src={springOfferImage.imageUrl} alt="Spring Collection" fill className="object-cover" data-ai-hint={springOfferImage.imageHint} />
-                    </div>
-                    <div className="w-1/2 flex flex-col items-center text-center p-4">
-                        <p className="text-sm text-primary">20% OFF THE ALL ORDER</p>
-                        <h3 className="text-2xl md:text-3xl font-headline mt-2">Spring Collection</h3>
-                        <Button variant="outline" className="mt-4">Shop Now</Button>
-                    </div>
-                </div>
-            )}
-            {winterOfferImage && (
-                <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
-                    <div className="w-1/2 flex flex-col items-center text-center p-4">
-                        <p className="text-sm text-primary">20% OFF THE ALL ORDER</p>
-                        <h3 className="text-2xl md:text-3xl font-headline mt-2">Winter Collection</h3>
-                        <Button variant="outline" className="mt-4">Shop Now</Button>
-                    </div>
-                    <div className="w-1/2 relative aspect-[3/4]">
-                        <Image src={winterOfferImage.imageUrl} alt="Winter Collection" fill className="object-cover" data-ai-hint={winterOfferImage.imageHint} />
-                    </div>
-                </div>
-            )}
-        </div>
+        <Carousel
+          plugins={[offersPlugin.current]}
+          opts={{ loop: true }}
+          className="w-full"
+          onMouseEnter={offersPlugin.current.stop}
+          onMouseLeave={offersPlugin.current.reset}
+        >
+          <CarouselContent>
+            <CarouselItem>
+              {springOfferImage && (
+                  <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
+                      <div className="w-1/2 relative aspect-[3/2]">
+                          <Image src={springOfferImage.imageUrl} alt="Spring Collection" fill className="object-cover" data-ai-hint={springOfferImage.imageHint} />
+                      </div>
+                      <div className="w-1/2 flex flex-col items-center text-center p-4">
+                          <p className="text-sm text-primary">20% OFF THE ALL ORDER</p>
+                          <h3 className="text-2xl md:text-3xl font-headline mt-2">Spring Collection</h3>
+                          <Button variant="outline" className="mt-4">Shop Now</Button>
+                      </div>
+                  </div>
+              )}
+            </CarouselItem>
+            <CarouselItem>
+              {winterOfferImage && (
+                  <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
+                      <div className="w-1/2 flex flex-col items-center text-center p-4">
+                          <p className="text-sm text-primary">20% OFF THE ALL ORDER</p>
+                          <h3 className="text-2xl md:text-3xl font-headline mt-2">Winter Collection</h3>
+                          <Button variant="outline" className="mt-4">Shop Now</Button>
+                      </div>
+                      <div className="w-1/2 relative aspect-[3/2]">
+                          <Image src={winterOfferImage.imageUrl} alt="Winter Collection" fill className="object-cover" data-ai-hint={winterOfferImage.imageHint} />
+                      </div>
+                  </div>
+              )}
+            </CarouselItem>
+          </CarouselContent>
+           <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
+        </Carousel>
       </section>
 
       {/* Newsletter */}
