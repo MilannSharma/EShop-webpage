@@ -39,7 +39,7 @@ export function Header({ toggleSidebar, isSidebarOpen }: HeaderProps) {
               <span className="sr-only">Open Menu</span>
             </Button>
             <Button variant="ghost" size="icon" className="hidden md:flex" onClick={toggleSidebar}>
-                {isSidebarOpen ? <PanelLeftClose /> : <PanelLeftOpen />}
+                <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle Sidebar</span>
             </Button>
 
