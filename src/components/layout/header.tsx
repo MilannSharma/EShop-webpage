@@ -12,16 +12,18 @@ import {
 import { useState, useEffect } from 'react';
 import CurrencySelector from '../currency/currency-selector';
 import { useSidebar } from '@/lib/sidebar-context';
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/pattern-generator', label: 'AI Pattern Generator' },
-];
+import { navItems } from '@/lib/nav-data';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Logo = () => (
     <svg
-      width="30"
-      height="40"
+      width="24"
+      height="32"
       viewBox="0 0 100 100"
       className="fill-current"
       xmlns="http://www.w3.org/2000/svg"
@@ -36,8 +38,8 @@ const Logo = () => (
         L
       </text>
       <text
-        x="28.5"
-        y="96"
+        x="26.5"
+        y="99"
         fontFamily="Playfair Display, serif"
         fontSize="70"
         fontWeight="bold"
@@ -58,7 +60,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-start gap-2 md:gap-4">
            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(true)}>
@@ -69,9 +71,9 @@ export function Header() {
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle Sidebar</span>
           </Button>
-          <Link href="/" className="flex items-center gap-0 -ml-2">
+          <Link href="/" className="flex items-center gap-0 -ml-2.5">
             <Logo />
-            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground -ml-2.5">Lakshita Creation</span>
+            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground -ml-1">Lakshita Creation</span>
           </Link>
         </div>
         
@@ -98,7 +100,7 @@ export function Header() {
           <div className="md:hidden flex items-center">
             <CartIcon />
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetContent side="left">
+              <SheetContent side="left" className="w-full max-w-sm overflow-y-auto">
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                     <Logo />
@@ -111,6 +113,37 @@ export function Header() {
                       </Link>
                     ))}
                   </nav>
+                  
+                  <div className="border-t pt-6 space-y-4">
+                     <Accordion type="multiple" className="w-full">
+                        {navItems.map((item) => (
+                            <AccordionItem value={item.title} key={item.title}>
+                            <AccordionTrigger className="px-4 py-2 text-base font-semibold text-foreground/80 hover:bg-accent/50 rounded-md">
+                                <div className="flex items-center gap-3">
+                                <item.icon className="h-5 w-5" />
+                                {item.title}
+                                </div>
+                            </AccordionTrigger>
+                            <AccordionContent className="pl-8">
+                                <ul className="space-y-2 py-2">
+                                {item.links.map((link) => (
+                                    <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block py-1.5 text-base text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-md"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                    </li>
+                                ))}
+                                </ul>
+                            </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                  </div>
+
                   <div className="border-t pt-6 space-y-4">
                     <CurrencySelector />
                     <Button variant="outline" asChild className="w-full justify-start">
@@ -129,3 +162,8 @@ export function Header() {
     </header>
   );
 }
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/pattern-generator', label: 'AI Pattern Generator' },
+];

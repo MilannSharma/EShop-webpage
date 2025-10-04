@@ -7,17 +7,19 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 export default function Sidebar() {
-  const { isSidebarOpen } = useSidebar();
+  const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
   return (
     <aside
+      onMouseEnter={() => setIsSidebarOpen(true)}
+      onMouseLeave={() => setIsSidebarOpen(false)}
       className={cn(
         'hidden md:flex flex-col border-r transition-[width] duration-300 ease-in-out',
-        isSidebarOpen ? 'w-64' : 'w-0'
+        isSidebarOpen ? 'w-64' : 'w-20' // Keep a smaller width when collapsed
       )}
     >
       <ScrollArea className="flex-grow">
-        <div className={cn('overflow-hidden transition-opacity duration-300', isSidebarOpen ? 'opacity-100' : 'opacity-0')}>
+        <div className={cn('overflow-hidden transition-opacity duration-300', isSidebarOpen ? 'opacity-100' : 'opacity-0 md:opacity-100')}>
           <nav className="py-4 px-2">
             <Accordion type="multiple" className="w-full">
               {navItems.map((item) => (
@@ -25,7 +27,7 @@ export default function Sidebar() {
                   <AccordionTrigger className="px-4 py-2 text-sm font-semibold text-foreground/80 hover:bg-accent/50 rounded-md">
                     <div className="flex items-center gap-3">
                       <item.icon className="h-5 w-5" />
-                      {item.title}
+                      {isSidebarOpen && item.title}
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="pl-6">
