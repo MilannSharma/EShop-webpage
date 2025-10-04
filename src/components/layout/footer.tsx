@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="border-t bg-card">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4 py-12 sm:px-6 lg:px-8">
         <div className="md:col-span-1">
-            <h3 className="font-headline text-lg font-semibold">KARA</h3>
+            <h3 className="font-headline text-lg font-semibold">Lakshita Creations</h3>
             <p className="text-sm text-muted-foreground mt-2">The fabric of your dreams. Discover our curated collection of exquisite textiles.</p>
              <div className="flex space-x-4 mt-4">
                 <Link href="#" className="text-muted-foreground hover:text-foreground"><Instagram className="h-5 w-5" /></Link>
@@ -44,7 +44,7 @@ export function Footer() {
       <div className="border-t">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
             <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} KARA. All rights reserved.
+            © {new Date().getFullYear()} Lakshita Creations. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
                 <p className="text-sm text-muted-foreground">

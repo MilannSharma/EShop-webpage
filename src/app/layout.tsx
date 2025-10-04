@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { MainContent } from '@/components/layout/main-content';
 
 export const metadata: Metadata = {
-  title: 'KARA',
+  title: 'Lakshita Creations',
   description: 'Exquisite textiles and fabrics for the discerning eye.',
 };
 

@@ -31,7 +31,7 @@ export function Header() {
             <span className="sr-only">Open Menu</span>
           </Button>
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-bold font-headline text-2xl text-secondary-foreground tracking-wider">KARA</span>
+            <span className="font-bold font-headline text-2xl text-secondary-foreground tracking-wider">Lakshita Creations</span>
           </Link>
         </div>
         
@@ -68,7 +68,7 @@ export function Header() {
               <SheetContent side="left" className="w-full max-w-sm overflow-y-auto">
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    <span className="font-bold font-headline text-lg text-secondary-foreground tracking-wider">KARA</span>
+                    <span className="font-bold font-headline text-lg text-secondary-foreground tracking-wider">Lakshita Creations</span>
                   </Link>
                   <nav className="flex flex-col gap-4 text-lg font-medium">
                     {navLinks.map(({ href, label }) => (
