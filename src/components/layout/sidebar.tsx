@@ -64,8 +64,7 @@ export function Sidebar({ isSidebarOpen, toggleSidebar }: { isSidebarOpen: boole
         isSidebarOpen ? "w-80" : "w-20"
       )}
     >
-        <div className="flex items-center justify-between h-20 px-4 border-b">
-            {isSidebarOpen && <span className="font-bold font-headline text-lg tracking-wider">Lakshita Creations</span>}
+        <div className="flex items-center justify-end h-20 px-4 border-b">
             <Button variant="ghost" size="icon" onClick={toggleSidebar}>
                 <MenuIcon className="h-6 w-6" />
                 <span className="sr-only">Toggle Sidebar</span>
