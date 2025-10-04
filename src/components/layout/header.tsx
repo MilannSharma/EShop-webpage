@@ -19,6 +19,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { navItems } from '@/lib/nav-data';
+import { Logo } from '../logo';
 
 
 export function Header() {
@@ -37,6 +38,7 @@ export function Header() {
               <SheetContent side="left" className="w-full max-w-sm overflow-y-auto">
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Logo className="h-8 w-8" />
                     <span className="font-bold font-headline text-lg text-secondary-foreground tracking-wider">Lakshita Creations</span>
                   </Link>
                   <nav className="flex flex-col gap-4 text-lg font-medium">
@@ -90,7 +92,7 @@ export function Header() {
               </SheetContent>
             </Sheet>
           <Link href="/" className="flex items-center gap-2 ml-2 md:ml-0">
-            <span className="font-bold font-headline text-2xl text-secondary-foreground tracking-wider">Lakshita Creations</span>
+            <Logo className="h-10 w-10 text-foreground" />
           </Link>
         </div>
         
