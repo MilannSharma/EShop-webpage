@@ -16,7 +16,7 @@ const Menu = ({ children, items }: { children: React.ReactNode; items: {name: st
   return (
     <div>
       <button
-        className="w-full flex items-center justify-between text-gray-600 p-2 rounded-lg hover:bg-gray-50 active:bg-gray-100 duration-150"
+        className="w-full flex items-center justify-between text-sidebar-muted-foreground p-2 rounded-lg hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent duration-150"
         onClick={() => setIsOpened((v) => !v)}
         aria-expanded={isOpened}
         aria-controls="submenu"
@@ -38,12 +38,12 @@ const Menu = ({ children, items }: { children: React.ReactNode; items: {name: st
       </button>
 
       {isOpened && (
-        <ul id="submenu" className="mx-4 px-2 border-l text-sm font-medium">
+        <ul id="submenu" className="mx-4 px-2 border-l-sidebar-border border-l text-sm font-medium">
           {items.map((item, idx) => (
             <li key={idx}>
               <Link
                 href={item.href}
-                className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg hover:bg-gray-50 active:bg-gray-100 duration-150"
+                className="flex items-center gap-x-2 text-sidebar-muted-foreground p-2 rounded-lg hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent duration-150"
               >
                 {item.name}
               </Link>
@@ -81,7 +81,7 @@ export function Sidebar() {
         "hidden md:flex flex-col flex-shrink-0 border-r bg-sidebar text-sidebar-foreground"
       )}
     >
-        <div className={cn("flex items-center h-20 px-4 border-b", isOpen ? "justify-between": "justify-center")}>
+        <div className={cn("flex items-center h-20 px-4 border-b-sidebar-border border-b", isOpen ? "justify-between": "justify-center")}>
             <Button variant="ghost" size="icon" onClick={toggleLock}>
                 {isLocked ? <X className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
                 <span className="sr-only">Toggle Sidebar</span>
@@ -95,7 +95,7 @@ export function Sidebar() {
                     <li key={idx} className="relative group">
                       {isOpen ? (
                         <Menu items={item.links}>
-                            <div className="text-gray-500">
+                            <div className="text-sidebar-muted-foreground">
                                 <item.icon className="w-5 h-5" />
                             </div>
                             <AnimatePresence>
@@ -112,7 +112,7 @@ export function Sidebar() {
                             </AnimatePresence>
                         </Menu>
                       ) : (
-                        <Link href="#" className="flex justify-center items-center p-2 text-gray-600 rounded-lg hover:bg-gray-50">
+                        <Link href="#" className="flex justify-center items-center p-2 text-sidebar-muted-foreground rounded-lg hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                            <item.icon className="w-5 h-5" />
                            <AnimatePresence>
                            {!isOpen && (
@@ -132,7 +132,7 @@ export function Sidebar() {
                 ))}
             </ul>
         </div>
-          <div className={cn("py-4 mt-auto border-t", isOpen ? "px-4" : "px-2")}>
+          <div className={cn("py-4 mt-auto border-t-sidebar-border border-t", isOpen ? "px-4" : "px-2")}>
               <div className={cn("w-full flex items-center gap-x-4", !isOpen && "justify-center")}>
                 <img
                   src="https://randomuser.me/api/portraits/women/79.jpg"
@@ -147,8 +147,8 @@ export function Sidebar() {
                       exit={{ opacity: 0}}
                       transition={{duration: 0.2, delay: 0.15}}
                   >
-                    <span className="block text-gray-700 text-sm font-semibold">Alivika tony</span>
-                    <span className="block mt-px text-gray-600 text-xs">Hobby Plan</span>
+                    <span className="block text-sidebar-foreground text-sm font-semibold">Alivika tony</span>
+                    <span className="block mt-px text-sidebar-muted-foreground text-xs">Hobby Plan</span>
                   </motion.div>
                 )}
                 </AnimatePresence>
@@ -158,4 +158,3 @@ export function Sidebar() {
     </motion.aside>
   );
 }
-
