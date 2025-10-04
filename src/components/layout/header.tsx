@@ -37,8 +37,8 @@ function Logo() {
         L
       </text>
       <text 
-        x="27.5" 
-        y="32.5" 
+        x="20" 
+        y="45" 
         fontFamily="Playfair Display, serif" 
         fontSize="36" 
         fontWeight="bold"
