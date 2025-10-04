@@ -34,8 +34,8 @@ const Logo = () => (
         L
       </text>
       <text 
-        x="35" 
-        y="95" 
+        x="32" 
+        y="98" 
         fontFamily="Playfair Display, serif" 
         fontSize="70"
         fontWeight="bold"
