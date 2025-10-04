@@ -17,26 +17,26 @@ const navLinks = [
 ];
 
 const Logo = () => (
-    <svg 
-      width="100" 
-      height="60" 
-      viewBox="0 0 100 100" 
+    <svg
+      width="100"
+      height="60"
+      viewBox="0 0 100 100"
       className="fill-current"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <text 
-        x="5" 
-        y="85" 
-        fontFamily="Playfair Display, serif" 
-        fontSize="90" 
+      <text
+        x="5"
+        y="85"
+        fontFamily="Playfair Display, serif"
+        fontSize="90"
         fontWeight="bold"
       >
         L
       </text>
-      <text 
-        x="32" 
-        y="98" 
-        fontFamily="Playfair Display, serif" 
+      <text
+        x="30.5"
+        y="99"
+        fontFamily="Playfair Display, serif"
         fontSize="70"
         fontWeight="bold"
       >
@@ -58,9 +58,9 @@ export function Header() {
     <header className="bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-sm">
       <div className="container mx-auto flex h-24 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-start">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-0">
             <Logo />
-            <span className="font-bold font-headline text-3xl hidden sm:inline-block text-secondary-foreground">Lakshita Creation</span>
+            <span className="font-bold font-headline text-3xl hidden sm:inline-block text-secondary-foreground -ml-4">Lakshita Creation</span>
           </Link>
         </div>
         
