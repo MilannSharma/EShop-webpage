@@ -148,13 +148,13 @@ export default async function Home() {
             )}
             {winterOfferImage && (
                 <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
+                    <div className="w-1/2 relative aspect-[3/4]">
+                        <Image src={winterOfferImage.imageUrl} alt="Winter Collection" fill className="object-cover" data-ai-hint={winterOfferImage.imageHint} />
+                    </div>
                      <div className="w-1/2 flex flex-col items-center text-center p-4">
                         <p className="text-sm text-primary">20% OFF THE ALL ORDER</p>
                         <h3 className="text-2xl md:text-3xl font-headline mt-2">Winter Collection</h3>
                         <Button variant="outline" className="mt-4">Shop Now</Button>
-                    </div>
-                    <div className="w-1/2 relative aspect-[3/4]">
-                        <Image src={winterOfferImage.imageUrl} alt="Winter Collection" fill className="object-cover" data-ai-hint={winterOfferImage.imageHint} />
                     </div>
                 </div>
             )}
