@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Button } from "@/components/ui/button";
 import ProductGrid from "@/components/products/product-grid";
 import Image from "next/image";
@@ -10,25 +12,43 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import ProductCard from "@/components/products/product-card";
 import { getProducts } from "@/lib/api";
 import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useState, useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import type { Product } from "@/lib/types";
 
-export default async function Home() {
+export default function Home() {
   const collectionImage = placeholderImages.placeholderImages.find(p => p.id === 'prod4');
   const springOfferImage = placeholderImages.placeholderImages.find(p => p.id === 'spring-offer');
   const winterOfferImage = placeholderImages.placeholderImages.find(p => p.id === 'winter-offer');
 
-  const products = await getProducts();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [newCollectionProducts, setNewCollectionProducts] = useState<Product[]>([]);
+  const [bestSellingProducts, setBestSellingProducts] = useState<Product[]>([]);
 
-  const newCollectionProducts = products.slice(0, 3);
-  const bestSellingProducts = products.slice(3, 6);
+  useEffect(() => {
+    async function fetchProducts() {
+      const allProducts = await getProducts();
+      setProducts(allProducts);
+      setNewCollectionProducts(allProducts.slice(0, 3));
+      setBestSellingProducts(allProducts.slice(3, 6));
+    }
+    fetchProducts();
+  }, []);
 
+  const plugin = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
 
   return (
     <div className="space-y-16 md:space-y-24">
       {/* Hero Carousel Section */}
       <section className="w-full -mt-8">
         <Carousel
+          plugins={[plugin.current]}
           opts={{ loop: true }}
           className="w-full"
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
         >
           <CarouselContent>
             {newCollectionProducts.map((product) => (
@@ -151,13 +171,13 @@ export default async function Home() {
             )}
             {winterOfferImage && (
                 <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
-                    <div className="w-1/2 relative aspect-[3/4]">
-                        <Image src={winterOfferImage.imageUrl} alt="Winter Collection" fill className="object-cover" data-ai-hint={winterOfferImage.imageHint} />
-                    </div>
                     <div className="w-1/2 flex flex-col items-center text-center p-4">
                         <p className="text-sm text-primary">20% OFF THE ALL ORDER</p>
                         <h3 className="text-2xl md:text-3xl font-headline mt-2">Winter Collection</h3>
                         <Button variant="outline" className="mt-4">Shop Now</Button>
+                    </div>
+                    <div className="w-1/2 relative aspect-[3/4]">
+                        <Image src={winterOfferImage.imageUrl} alt="Winter Collection" fill className="object-cover" data-ai-hint={winterOfferImage.imageHint} />
                     </div>
                 </div>
             )}
