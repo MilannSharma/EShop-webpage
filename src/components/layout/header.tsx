@@ -93,6 +93,7 @@ export function Header() {
             </Sheet>
           <Link href="/" className="flex items-center gap-2 ml-2 md:ml-0">
             <Logo className="h-10 w-10 text-foreground" />
+            <span className="hidden md:inline font-bold font-headline text-lg text-foreground tracking-wider">Lakshita Creations</span>
           </Link>
         </div>
         
