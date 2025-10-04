@@ -6,8 +6,8 @@ import { Toaster } from "@/components/ui/toaster"
 import { CartProvider } from '@/lib/cart-context';
 import { CurrencyProvider } from '@/lib/currency-context';
 import { SidebarProvider } from '@/lib/sidebar-context';
-import Sidebar from '@/components/layout/sidebar';
 import { cn } from '@/lib/utils';
+import { MainContent } from '@/components/layout/main-content';
 
 export const metadata: Metadata = {
   title: 'Lakshita Creation',
@@ -33,12 +33,9 @@ export default function RootLayout({
             <SidebarProvider>
               <div className="flex min-h-screen flex-col">
                 <Header />
-                <div className="flex flex-1">
-                  <Sidebar />
-                  <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    {children}
-                  </main>
-                </div>
+                <MainContent>
+                  {children}
+                </MainContent>
                 <Footer />
               </div>
               <Toaster />
