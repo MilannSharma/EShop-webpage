@@ -1,13 +1,13 @@
 'use client';
 
 import { getProductById } from '@/lib/api';
-import { notFound } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/lib/cart-context';
 import { useCurrency } from '@/lib/currency-context';
 import Recommendations from '@/components/products/recommendations';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, ShoppingBag } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Product } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -15,8 +15,15 @@ import { Skeleton } from '@/components/ui/skeleton';
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
+  const router = useRouter();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const handleBuyNow = () => {
+    if (!product) return;
+    addToCart(product);
+    router.push('/checkout');
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -71,10 +78,16 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           <div className="text-base text-foreground/80 font-body leading-relaxed space-y-4">
             <p>{product.description}</p>
           </div>
-          <Button size="lg" onClick={() => addToCart(product)}>
-            <ShoppingCart className="mr-2" />
-            Add to Cart
-          </Button>
+          <div className="flex items-center gap-4">
+            <Button size="lg" variant="outline" onClick={() => addToCart(product)}>
+              <ShoppingCart className="mr-2" />
+              Add to Cart
+            </Button>
+            <Button size="lg" onClick={handleBuyNow}>
+              <ShoppingBag className="mr-2" />
+              Buy Now
+            </Button>
+          </div>
         </div>
       </div>
 

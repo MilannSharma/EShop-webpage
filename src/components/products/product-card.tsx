@@ -7,7 +7,8 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import type { Product } from '@/lib/types';
 import { useCart } from '@/lib/cart-context';
 import { useCurrency } from '@/lib/currency-context';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, ShoppingBag } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +17,12 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
+  const router = useRouter();
+
+  const handleBuyNow = () => {
+    addToCart(product);
+    router.push('/checkout');
+  };
 
   return (
     <Card className="flex flex-col overflow-hidden rounded-lg shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
@@ -38,14 +45,20 @@ export default function ProductCard({ product }: ProductCardProps) {
           </CardTitle>
         </CardContent>
       </Link>
-      <CardFooter className="flex items-center justify-between p-4 pt-0">
+      <CardFooter className="flex flex-col items-start gap-4 p-4 pt-0">
         <p className="text-xl font-semibold">
           {formatPrice(product.price)}
         </p>
-        <Button onClick={() => addToCart(product)}>
-          <ShoppingCart className="mr-2" />
-          Add to Cart
-        </Button>
+        <div className="w-full grid grid-cols-2 gap-2">
+            <Button variant="outline" onClick={() => addToCart(product)}>
+              <ShoppingCart className="mr-2 h-4 w-4" />
+              Add to Cart
+            </Button>
+            <Button onClick={handleBuyNow}>
+              <ShoppingBag className="mr-2 h-4 w-4" />
+              Buy Now
+            </Button>
+        </div>
       </CardFooter>
     </Card>
   );
