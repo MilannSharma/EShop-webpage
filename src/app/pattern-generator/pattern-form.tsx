@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState, useTransition } from 'react';
 import { generatePatternAction } from './actions';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -15,28 +15,17 @@ const initialState = {
 };
 
 function SubmitButton() {
-    // `pending` is not available in useFormState, but this is a placeholder for future React versions.
-    // For now, we will manage loading state manually. This code is illustrative.
-    const pending = false; 
+    const [isPending] = useTransition(); 
     return (
-        <Button type="submit" disabled={pending} size="lg">
+        <Button type="submit" disabled={isPending} size="lg">
             <Wand2 className="mr-2 h-5 w-5" />
-            {pending ? 'Generating...' : 'Generate Pattern'}
+            {isPending ? 'Generating...' : 'Generate Pattern'}
         </Button>
     );
 }
 
 export default function PatternForm() {
-  const [state, formAction] = useFormState(generatePatternAction, initialState);
-  // A simple way to track loading state until useFormStatus is stable for this pattern.
-  let isPending = false;
-  if(typeof window !== 'undefined') {
-      const navigation = window.performance.getEntriesByType("navigation")[0];
-      if(navigation?.type === 'navigate') {
-          // This is a rough way to guess if a form submission is happening.
-          // A more robust solution would use a separate state variable.
-      }
-  }
+  const [state, formAction, isPending] = useActionState(generatePatternAction, initialState);
 
   return (
     <div className="space-y-8">
