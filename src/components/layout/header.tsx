@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet"
 import { useState, useEffect } from 'react';
 import CurrencySelector from '../currency/currency-selector';
+import { useSidebar } from '@/lib/sidebar-context';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -19,8 +20,8 @@ const navLinks = [
 
 const Logo = () => (
     <svg
-      width="100"
-      height="60"
+      width="30"
+      height="40"
       viewBox="0 0 100 100"
       className="fill-current"
       xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +36,8 @@ const Logo = () => (
         L
       </text>
       <text
-        x="29.5"
-        y="99"
+        x="28.5"
+        y="96"
         fontFamily="Playfair Display, serif"
         fontSize="70"
         fontWeight="bold"
@@ -50,26 +51,27 @@ const Logo = () => (
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { toggleSidebar } = useSidebar();
 
   useEffect(() => {
     setHasLoaded(true);
-
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className={`w-full border-b bg-background transition-all duration-300 ${isScrolled ? 'shadow-md' : ''}`}>
-      <div className="container mx-auto flex h-24 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-start">
-          <Link href="/" className="flex items-center gap-0">
+    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-start gap-2 md:gap-4">
+           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(true)}>
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Open Menu</span>
+          </Button>
+          <Button variant="ghost" size="icon" className="hidden md:flex" onClick={toggleSidebar}>
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Toggle Sidebar</span>
+          </Button>
+          <Link href="/" className="flex items-center gap-0 -ml-2">
             <Logo />
-            <span className="font-bold font-headline text-3xl hidden sm:inline-block text-secondary-foreground -ml-5">Lakshita Creation</span>
+            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground -ml-2.5">Lakshita Creation</span>
           </Link>
         </div>
         
@@ -93,14 +95,9 @@ export function Header() {
             <CartIcon />
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
+            <CartIcon />
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              </SheetTrigger>
               <SheetContent side="left">
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
@@ -116,15 +113,12 @@ export function Header() {
                   </nav>
                   <div className="border-t pt-6 space-y-4">
                     <CurrencySelector />
-                    <div className="flex items-center gap-2">
-                       <Button variant="ghost" size="icon" asChild>
-                          <Link href="/account">
-                            <User className="h-5 w-5" />
-                            <span className="sr-only">Account</span>
-                          </Link>
-                        </Button>
-                        <CartIcon />
-                    </div>
+                    <Button variant="outline" asChild className="w-full justify-start">
+                      <Link href="/account" onClick={() => setIsMobileMenuOpen(false)}>
+                        <User className="mr-2" />
+                        My Account
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </SheetContent>

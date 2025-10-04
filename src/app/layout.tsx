@@ -5,9 +5,12 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster"
 import { CartProvider } from '@/lib/cart-context';
 import { CurrencyProvider } from '@/lib/currency-context';
+import { SidebarProvider } from '@/lib/sidebar-context';
+import Sidebar from '@/components/layout/sidebar';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Lakshita Collection',
+  title: 'Lakshita Creation',
   description: 'Exquisite textiles and fabrics for the discerning eye.',
 };
 
@@ -27,14 +30,19 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <CurrencyProvider>
           <CartProvider>
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {children}
-              </main>
-              <Footer />
-            </div>
-            <Toaster />
+            <SidebarProvider>
+              <div className="flex min-h-screen flex-col">
+                <Header />
+                <div className="flex flex-1">
+                  <Sidebar />
+                  <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    {children}
+                  </main>
+                </div>
+                <Footer />
+              </div>
+              <Toaster />
+            </SidebarProvider>
           </CartProvider>
         </CurrencyProvider>
       </body>
