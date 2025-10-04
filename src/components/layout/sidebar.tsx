@@ -11,13 +11,20 @@ import {
 } from '@/components/ui/accordion';
 import { navItems } from '@/lib/nav-data';
 import { cn } from '@/lib/utils';
+import { useSidebar } from '@/lib/sidebar-context';
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { isSidebarOpen } = useSidebar();
 
   return (
-    <aside className="hidden md:block w-64 flex-shrink-0 border-r bg-sidebar text-sidebar-foreground">
-      <div className="h-full p-4">
+    <aside
+      className={cn(
+        "hidden md:block flex-shrink-0 border-r bg-sidebar text-sidebar-foreground transition-all duration-300 ease-in-out",
+        isSidebarOpen ? "w-64" : "w-0 overflow-hidden"
+      )}
+    >
+      <div className={cn("h-full p-4", isSidebarOpen ? "opacity-100" : "opacity-0")}>
         <h2 className="px-4 pb-2 text-lg font-semibold tracking-tight text-sidebar-primary-foreground">
           Product Categories
         </h2>
@@ -38,10 +45,8 @@ export function Sidebar() {
                         <Link
                           href={link.href}
                           className={cn(
-                            'block py-1.5 px-2 text-sm rounded-md transition-colors',
-                            pathname === link.href
-                              ? 'bg-sidebar-primary text-sidebar-primary-foreground'
-                              : 'text-sidebar-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
+                            'block rounded-md py-1.5 text-sm text-sidebar-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                            pathname === link.href && 'bg-sidebar-accent text-sidebar-accent-foreground'
                           )}
                         >
                           {link.name}

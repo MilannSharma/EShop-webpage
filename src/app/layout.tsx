@@ -8,11 +8,29 @@ import { CartProvider } from '@/lib/cart-context';
 import { CurrencyProvider } from '@/lib/currency-context';
 import { MainContent } from '@/components/layout/main-content';
 import { Sidebar } from '@/components/layout/sidebar';
+import { SidebarProvider } from '@/lib/sidebar-context';
 
 export const metadata: Metadata = {
   title: 'Lakshita Creations',
   description: 'Exquisite textiles and fabrics for the discerning eye.',
 };
+
+function AppLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <div className="flex flex-1">
+        <Sidebar />
+        <MainContent>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {children}
+          </div>
+        </MainContent>
+      </div>
+      <Footer />
+    </div>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -30,19 +48,10 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <CurrencyProvider>
           <CartProvider>
-              <div className="flex min-h-screen flex-col">
-                <Header />
-                <div className="flex flex-1">
-                  <Sidebar />
-                  <MainContent>
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                      {children}
-                    </div>
-                  </MainContent>
-                </div>
-                <Footer />
-              </div>
-              <Toaster />
+            <SidebarProvider>
+              <AppLayout>{children}</AppLayout>
+            </SidebarProvider>
+            <Toaster />
           </CartProvider>
         </CurrencyProvider>
       </body>
