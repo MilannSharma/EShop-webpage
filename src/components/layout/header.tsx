@@ -16,6 +16,36 @@ const navLinks = [
   { href: '/pattern-generator', label: 'AI Pattern Generator' },
 ];
 
+const Logo = () => (
+    <svg 
+      width="60" 
+      height="40" 
+      viewBox="0 0 100 100" 
+      className="fill-current text-foreground"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <text 
+        x="10" 
+        y="80" 
+        fontFamily="Playfair Display, serif" 
+        fontSize="80" 
+        fontWeight="bold"
+      >
+        L
+      </text>
+      <text 
+        x="35" 
+        y="85" 
+        fontFamily="Playfair Display, serif" 
+        fontSize="60"
+        fontWeight="bold"
+      >
+        C
+      </text>
+    </svg>
+)
+
+
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -28,8 +58,9 @@ export function Header() {
     <header className="bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-start">
-          <Link href="/" className="flex items-center">
-            <h1 className="text-2xl md:text-3xl font-bold font-headline">Lakshita Collection</h1>
+          <Link href="/" className="flex items-center gap-2">
+            <Logo />
+            <span className="font-bold font-headline text-xl hidden sm:inline-block">Lakshita Collection</span>
           </Link>
         </div>
         
@@ -62,8 +93,9 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="left">
                 <div className="flex flex-col gap-6 pt-8">
-                  <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                    <h1 className="text-xl font-bold font-headline">Lakshita Collection</h1>
+                  <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Logo />
+                    <span className="font-bold font-headline text-lg">Lakshita Collection</span>
                   </Link>
                   <nav className="flex flex-col gap-4 text-lg font-medium">
                     {navLinks.map(({ href, label }) => (
