@@ -9,17 +9,19 @@ import { MainContent } from '@/components/layout/main-content';
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-col h-screen">
       <Header />
-      <div className="flex flex-1">
+      <div className="flex flex-1 overflow-hidden">
         <Sidebar />
-        <MainContent>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {children}
-          </div>
-        </MainContent>
+        <div className="flex-1 overflow-y-auto">
+          <MainContent>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              {children}
+            </div>
+          </MainContent>
+          <Footer />
+        </div>
       </div>
-      <Footer />
     </div>
   );
 }
