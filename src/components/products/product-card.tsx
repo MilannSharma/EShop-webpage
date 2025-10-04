@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -33,20 +34,20 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
         </div>
       </Link>
-      <div className="mt-4 flex justify-between">
-        <div>
-          <h3 className="text-sm text-foreground">
+      <div className="mt-4 flex justify-between gap-2">
+        <div className="flex-1">
+          <h3 className="text-sm font-medium text-foreground">
             <Link href={`/products/${product.id}`}>
               <span aria-hidden="true" className="absolute inset-0" />
               {product.name}
             </Link>
           </h3>
-          <p className="mt-1 text-sm text-foreground/60">{product.description.split('.')[0]}</p>
+          <p className="mt-1 text-sm text-foreground/60 line-clamp-1">{product.description}</p>
         </div>
         <p className="text-sm font-medium text-foreground">{formatPrice(product.price)}</p>
       </div>
-       <div className="absolute bottom-20 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-        <Button size="icon" onClick={() => addToCart(product)}>
+       <div className="absolute bottom-20 right-2 opacity-0 group-hover:opacity-100 transition-opacity md:hidden">
+        <Button size="icon" variant="secondary" onClick={(e) => { e.stopPropagation(); addToCart(product); }}>
           <Plus />
         </Button>
       </div>

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -42,7 +43,7 @@ export default function CartView() {
           />
         ))}
       </div>
-      <div className="lg:col-span-1 sticky top-24">
+      <div className="lg:col-span-1 sticky top-24 mt-8 lg:mt-0">
         <Card>
           <CardHeader>
             <CardTitle>Order Summary</CardTitle>
@@ -78,19 +79,19 @@ function CartItemRow({ item, onRemove, onUpdateQuantity }: { item: CartItem, onR
   const { formatPrice } = useCurrency();
   return (
     <div className="flex items-center gap-4">
-      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden">
+      <div className="relative h-20 w-20 md:h-24 md:w-24 flex-shrink-0 overflow-hidden">
         <Image src={item.product.imageUrl} alt={item.product.name} fill className="object-cover" />
       </div>
       <div className="flex-grow">
-        <Link href={`/products/${item.product.id}`} className="font-semibold hover:underline">{item.product.name}</Link>
-        <p className="text-muted-foreground">{formatPrice(item.product.price)}</p>
+        <Link href={`/products/${item.product.id}`} className="font-semibold hover:underline text-sm md:text-base">{item.product.name}</Link>
+        <p className="text-muted-foreground text-sm md:text-base">{formatPrice(item.product.price)}</p>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 md:gap-4">
         <Input 
           type="number" 
           value={item.quantity} 
           onChange={(e) => onUpdateQuantity(item.product.id, parseInt(e.target.value))}
-          className="w-20 h-10 text-center"
+          className="w-16 h-10 text-center"
           min="1"
         />
         <Button variant="ghost" size="icon" onClick={() => onRemove(item.product.id)}>

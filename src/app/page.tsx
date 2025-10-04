@@ -21,7 +21,7 @@ export default async function Home() {
 
 
   return (
-    <div className="space-y-24">
+    <div className="space-y-16 md:space-y-24">
       {/* Hero Carousel Section */}
       <section className="w-full -mt-8">
         <Carousel
@@ -31,7 +31,7 @@ export default async function Home() {
           <CarouselContent>
             {newCollectionProducts.map((product) => (
               <CarouselItem key={product.id}>
-                <div className="relative aspect-[4/3] w-full">
+                <div className="relative aspect-[3/4] md:aspect-[2/1] w-full">
                   <Image
                     src={product.imageUrl}
                     alt={product.description}
@@ -40,15 +40,15 @@ export default async function Home() {
                     data-ai-hint={product.imageHint}
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 lg:p-16 text-white">
-                    <h1 className="text-3xl md:text-5xl font-headline tracking-tight">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-12 lg:p-16 text-white">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-headline tracking-tight">
                       {product.name}
                     </h1>
-                    <p className="mt-4 max-w-lg text-white/80">
+                    <p className="mt-2 md:mt-4 max-w-lg text-sm md:text-base text-white/80">
                       Discover our curated collection of exquisite textiles, crafted with passion and artistry.
                     </p>
-                    <Button asChild size="lg" className="mt-6">
+                    <Button asChild size="lg" className="mt-4 md:mt-6">
                       <Link href={`/products/${product.id}`}>Shop Now <ArrowRight className="ml-2" /></Link>
                     </Button>
                   </div>
@@ -63,28 +63,30 @@ export default async function Home() {
       
       {/* Product Carousel */}
       <section id="products" className="scroll-mt-20 container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold tracking-tight">
+        <div className="flex justify-between items-baseline mb-6 md:mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
             Our New Arrivals
           </h2>
-          <Button variant="link">View All <ArrowRight className="ml-2 h-4 w-4"/></Button>
+          <Button variant="link" asChild>
+            <Link href="#">View All <ArrowRight className="ml-2 h-4 w-4"/></Link>
+          </Button>
         </div>
         <Carousel opts={{ align: "start", loop: true }}>
             <CarouselContent>
                 {products.map(product => (
-                    <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={product.id} className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                         <ProductCard product={product} />
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
         </Carousel>
       </section>
 
       {/* Featured Collection */}
       <section className="bg-card w-full">
-        <div className="container mx-auto grid md:grid-cols-2 items-center gap-12 px-4 sm:px-6 lg:px-8 py-20">
+        <div className="container mx-auto grid md:grid-cols-2 items-center gap-8 md:gap-12 px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           {collectionImage && (
             <div className="relative aspect-square w-full">
               <Image 
@@ -98,39 +100,41 @@ export default async function Home() {
           )}
           <div className="text-left">
             <h2 className="text-3xl md:text-4xl font-headline tracking-wide">CLASSIC WINTER COLLECTION</h2>
-            <p className="mt-6 text-foreground/60 leading-relaxed">
+            <p className="mt-4 md:mt-6 text-foreground/60 leading-relaxed">
               Our Classic Winter Collection brings together timeless designs and the finest materials. Experience the perfect blend of warmth, comfort, and style, crafted to elevate your winter wardrobe. Each piece reflects our commitment to quality and sustainable fashion, ensuring you look and feel your best through the colder months.
             </p>
-            <Button className="mt-8" size="lg">Shop The Collection</Button>
+            <Button className="mt-6 md:mt-8" size="lg">Shop The Collection</Button>
           </div>
         </div>
       </section>
       
       {/* Best Selling Carousel */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold tracking-tight">Best Selling Items</h2>
-            <Button variant="link">View All <ArrowRight className="ml-2 h-4 w-4"/></Button>
+        <div className="flex justify-between items-baseline mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Best Selling Items</h2>
+            <Button variant="link" asChild>
+                <Link href="#">View All <ArrowRight className="ml-2 h-4 w-4"/></Link>
+            </Button>
         </div>
         <Carousel opts={{ align: "start", loop: true }}>
             <CarouselContent>
                 {bestSellingProducts.map(product => product && (
-                    <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={product.id} className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                         <ProductCard product={product} />
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
         </Carousel>
       </section>
 
       {/* Newsletter */}
       <section className="container mx-auto text-center py-12">
-        <h2 className="text-3xl font-headline tracking-tight">Sign Up For Our Newsletter</h2>
+        <h2 className="text-2xl md:text-3xl font-headline tracking-tight">Sign Up For Our Newsletter</h2>
         <p className="mt-2 text-foreground/60">Get updates on new arrivals and special offers.</p>
-        <form className="mt-8 max-w-md mx-auto flex gap-2">
-          <Input type="email" placeholder="Enter your email" className="text-center" />
+        <form className="mt-6 md:mt-8 max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+          <Input type="email" placeholder="Enter your email" className="text-center sm:text-left" />
           <Button type="submit">Sign Up</Button>
         </form>
       </section>

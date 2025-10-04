@@ -33,18 +33,18 @@ export default function CheckoutPage() {
     return (
         <>
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Checkout</h1>
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
                 <div className="space-y-8">
                     <Card>
                         <CardHeader>
                             <CardTitle>Shipping Information</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid sm:grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <Label htmlFor="first-name">First Name</Label>
                                     <Input id="first-name" placeholder="John" />
-                                inudiv>
+                                </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="last-name">Last Name</Label>
                                     <Input id="last-name" placeholder="Doe" />
@@ -54,7 +54,7 @@ export default function CheckoutPage() {
                                 <Label htmlFor="address">Address</Label>
                                 <Input id="address" placeholder="123 Textile Ave" />
                             </div>
-                             <div className="grid grid-cols-3 gap-4">
+                             <div className="grid sm:grid-cols-3 gap-4">
                                 <div className="space-y-2 col-span-2">
                                     <Label htmlFor="city">City</Label>
                                     <Input id="city" placeholder="Fabricville" />
@@ -102,7 +102,7 @@ export default function CheckoutPage() {
                             {cartItems.map(item => (
                                 <div key={item.product.id} className="flex justify-between items-center">
                                     <div className="flex items-center gap-4">
-                                        <div className="relative w-12 h-12 rounded-md overflow-hidden">
+                                        <div className="relative w-12 h-12 rounded-md overflow-hidden flex-shrink-0">
                                             <Image src={item.product.imageUrl} alt={item.product.name} fill className="object-cover" />
                                         </div>
                                         <div>
@@ -110,7 +110,7 @@ export default function CheckoutPage() {
                                             <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
                                         </div>
                                     </div>
-                                    <p>{formatPrice(item.product.price * item.quantity)}</p>
+                                    <p className="text-right">{formatPrice(item.product.price * item.quantity)}</p>
                                 </div>
                             ))}
                             <Separator />
