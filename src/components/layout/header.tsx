@@ -25,19 +25,25 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40">
+    <header className="wfull borderb bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-start md:w-1/3">
            
 
            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
               <SheetContent side="left" className="w-full max-w-sm overflow-y-auto">
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                     
                     
-                    <img src="https://image2url.com/images/1759617767581-65797a2b-7c3e-4b96-bf8c-3bc2e9327652.png" alt="Logo" className="h-20 w-20" />
-                    <span className="font-bold font-headline text-lg text-secondary-foreground tracking-wider">Lakshita Creations</span>
+                    <img src="https://image2url.com/images/1759617767581-65797a2b-7c3e-4b96-bf8c-3bc2e9327652.png" alt="Logo" className="h-12 w-12 md:h-20 md:w-20" />
+                    <span className="font-bold font-headline text-base md:text-lg text-secondary-foreground tracking-wider">Lakshita Creation</span>
                   </Link>
                   <nav className="flex flex-col gap-4 text-lg font-medium">
                     {navLinks.map(({ href, label }) => (
@@ -90,10 +96,10 @@ export function Header() {
               </SheetContent>
             </Sheet>
           <Link href="/" className="flex items-center gap-2 ml-2 md:ml-0">
-            
-            
-            <img src="https://image2url.com/images/1759617767581-65797a2b-7c3e-4b96-bf8c-3bc2e9327652.png" alt="Logo" className="h-20 w-20" />
-            <span className="hidden md:inline font-bold font-headline text-lg text-foreground tracking-wider">Lakshita Creations</span>
+
+
+            <img src="https://image2url.com/images/1759617767581-65797a2b-7c3e-4b96-bf8c-3bc2e9327652.png" alt="Logo" className="h-12 w-12 md:h-20 md:w-20" />
+            <span className="md:inline font-bold font-headline text-base md:text-lg text-foreground tracking-wider">Lakshita Creation</span>
           </Link>
         </div>
         
