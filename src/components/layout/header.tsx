@@ -22,9 +22,8 @@ function Logo() {
       width="48" 
       height="48" 
       viewBox="0 0 52 52" 
-      fill="currentColor" 
+      fill="black" 
       xmlns="http://www.w3.org/2000/svg"
-      className="text-primary"
     >
       <text 
         x="2" 
@@ -36,8 +35,8 @@ function Logo() {
         L
       </text>
       <text 
-        x="15" 
-        y="50" 
+        x="13" 
+        y="52" 
         fontFamily="Playfair Display, serif" 
         fontSize="36" 
         fontWeight="bold"
@@ -56,7 +55,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
-          <span className="font-headline text-xl font-bold tracking-tight">
+          <span className="font-headline text-xl font-bold tracking-tight text-primary">
             Lakshita Collection
           </span>
         </Link>
@@ -89,7 +88,7 @@ export function Header() {
               <div className="flex flex-col gap-6 pt-8">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                   <Logo />
-                  <span className="font-headline text-xl font-bold tracking-tight">
+                  <span className="font-headline text-xl font-bold tracking-tight text-primary">
                     Lakshita Collection
                   </span>
                 </Link>
