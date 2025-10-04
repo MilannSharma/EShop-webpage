@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Palette, User, Menu } from 'lucide-react';
+import { User, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/cart/cart-icon';
 import {
@@ -23,7 +23,7 @@ export function Header() {
     <header className="bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <Palette className="h-6 w-6 text-primary" />
+          <div className="font-headline text-4xl font-bold text-primary">LC</div>
           <span className="font-headline text-xl font-bold tracking-tight">
             Lakshita Collection
           </span>
@@ -56,7 +56,7 @@ export function Header() {
             <SheetContent side="left">
               <div className="flex flex-col gap-6 pt-8">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Palette className="h-6 w-6 text-primary" />
+                  <div className="font-headline text-4xl font-bold text-primary">LC</div>
                   <span className="font-headline text-xl font-bold tracking-tight">
                     Lakshita Collection
                   </span>
