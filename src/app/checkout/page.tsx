@@ -6,12 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/lib/cart-context";
+import { useCurrency } from "@/lib/currency-context";
 import Image from "next/image";
 import Link from "next/link";
 import { CreditCard, Lock } from "lucide-react";
 
 export default function CheckoutPage() {
     const { cartItems, cartTotal } = useCart();
+    const { formatPrice } = useCurrency();
+
+    const formattedCartTotal = formatPrice(cartTotal);
 
     if (cartItems.length === 0) {
         return (
@@ -105,13 +109,13 @@ export default function CheckoutPage() {
                                             <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
                                         </div>
                                     </div>
-                                    <p>${(item.product.price * item.quantity).toFixed(2)}</p>
+                                    <p>{formatPrice(item.product.price * item.quantity)}</p>
                                 </div>
                             ))}
                             <Separator />
                             <div className="flex justify-between">
                                 <p>Subtotal</p>
-                                <p>${cartTotal.toFixed(2)}</p>
+                                <p>{formattedCartTotal}</p>
                             </div>
                             <div className="flex justify-between">
                                 <p>Shipping</p>
@@ -120,7 +124,7 @@ export default function CheckoutPage() {
                             <Separator />
                             <div className="flex justify-between font-bold text-lg">
                                 <p>Total</p>
-                                <p>${cartTotal.toFixed(2)}</p>
+                                <p>{formattedCartTotal}</p>
                             </div>
                         </CardContent>
                     </Card>

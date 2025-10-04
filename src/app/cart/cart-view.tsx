@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/lib/cart-context';
+import { useCurrency } from '@/lib/currency-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,6 +13,9 @@ import type { CartItem } from '@/lib/types';
 
 export default function CartView() {
   const { cartItems, cartTotal, removeFromCart, updateQuantity } = useCart();
+  const { formatPrice } = useCurrency();
+
+  const formattedCartTotal = formatPrice(cartTotal);
 
   if (cartItems.length === 0) {
     return (
@@ -46,7 +50,7 @@ export default function CartView() {
           <CardContent className="space-y-4">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span>${cartTotal.toFixed(2)}</span>
+              <span>{formattedCartTotal}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
@@ -55,7 +59,7 @@ export default function CartView() {
             <Separator />
             <div className="flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span>${cartTotal.toFixed(2)}</span>
+              <span>{formattedCartTotal}</span>
             </div>
           </CardContent>
           <CardFooter>
@@ -71,6 +75,7 @@ export default function CartView() {
 
 
 function CartItemRow({ item, onRemove, onUpdateQuantity }: { item: CartItem, onRemove: (id: string) => void, onUpdateQuantity: (id: string, q: number) => void}) {
+  const { formatPrice } = useCurrency();
   return (
     <div className="flex items-center gap-4">
       <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
@@ -78,7 +83,7 @@ function CartItemRow({ item, onRemove, onUpdateQuantity }: { item: CartItem, onR
       </div>
       <div className="flex-grow">
         <Link href={`/products/${item.product.id}`} className="font-semibold hover:underline">{item.product.name}</Link>
-        <p className="text-muted-foreground">${item.product.price.toFixed(2)}</p>
+        <p className="text-muted-foreground">{formatPrice(item.product.price)}</p>
       </div>
       <div className="flex items-center gap-4">
         <Input 

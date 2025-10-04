@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Product } from '@/lib/types';
 import { useCart } from '@/lib/cart-context';
+import { useCurrency } from '@/lib/currency-context';
 import { ShoppingCart } from 'lucide-react';
 
 interface ProductCardProps {
@@ -14,6 +15,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
+  const { formatPrice } = useCurrency();
 
   return (
     <Card className="flex flex-col overflow-hidden rounded-lg shadow-sm transition-transform duration-300 hover:scale-105 hover:shadow-lg">
@@ -38,7 +40,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </Link>
       <CardFooter className="flex items-center justify-between p-4 pt-0">
         <p className="text-xl font-semibold">
-          ${product.price.toFixed(2)}
+          {formatPrice(product.price)}
         </p>
         <Button onClick={() => addToCart(product)}>
           <ShoppingCart className="mr-2" />

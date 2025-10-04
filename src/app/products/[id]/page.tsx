@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/lib/cart-context';
+import { useCurrency } from '@/lib/currency-context';
 import Recommendations from '@/components/products/recommendations';
 import { ShoppingCart } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -13,6 +14,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const { addToCart } = useCart();
+  const { formatPrice } = useCurrency();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -64,7 +66,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         <div className="space-y-6">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{product.name}</h1>
           <p className="text-3xl font-semibold text-primary">
-            ${product.price.toFixed(2)}
+            {formatPrice(product.price)}
           </p>
           <div className="text-base text-foreground/80 font-body leading-relaxed space-y-4">
             <p>{product.description}</p>

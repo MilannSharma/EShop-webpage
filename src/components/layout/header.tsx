@@ -10,6 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { useState, useEffect } from 'react';
+import CurrencySelector from '../currency/currency-selector';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -34,7 +35,7 @@ const Logo = () => (
         L
       </text>
       <text
-        x="30.5"
+        x="29.5"
         y="99"
         fontFamily="Playfair Display, serif"
         fontSize="70"
@@ -49,18 +50,26 @@ const Logo = () => (
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     setHasLoaded(true);
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className="w-full border-b bg-background">
+    <header className={`w-full border-b bg-background transition-all duration-300 ${isScrolled ? 'shadow-md' : ''}`}>
       <div className="container mx-auto flex h-24 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-start">
           <Link href="/" className="flex items-center gap-0">
             <Logo />
-            <span className="font-bold font-headline text-3xl hidden sm:inline-block text-secondary-foreground -ml-4">Lakshita Creation</span>
+            <span className="font-bold font-headline text-3xl hidden sm:inline-block text-secondary-foreground -ml-5">Lakshita Creation</span>
           </Link>
         </div>
         
@@ -74,6 +83,7 @@ export function Header() {
 
         <div className="flex items-center justify-end gap-2">
           <div className="hidden md:flex items-center gap-2">
+            <CurrencySelector />
             <Button variant="ghost" size="icon" asChild>
               <Link href="/account">
                 <User className="h-5 w-5" />
@@ -104,14 +114,17 @@ export function Header() {
                       </Link>
                     ))}
                   </nav>
-                  <div className="flex items-center gap-2 border-t pt-6">
-                     <Button variant="ghost" size="icon" asChild>
-                        <Link href="/account">
-                          <User className="h-5 w-5" />
-                          <span className="sr-only">Account</span>
-                        </Link>
-                      </Button>
-                      <CartIcon />
+                  <div className="border-t pt-6 space-y-4">
+                    <CurrencySelector />
+                    <div className="flex items-center gap-2">
+                       <Button variant="ghost" size="icon" asChild>
+                          <Link href="/account">
+                            <User className="h-5 w-5" />
+                            <span className="sr-only">Account</span>
+                          </Link>
+                        </Button>
+                        <CartIcon />
+                    </div>
                   </div>
                 </div>
               </SheetContent>

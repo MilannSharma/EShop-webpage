@@ -1,3 +1,6 @@
+
+'use client'
+
 import { getOrders } from "@/lib/api";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,9 +12,21 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import Image from "next/image";
+import { useCurrency } from "@/lib/currency-context";
+import { useEffect, useState } from "react";
+import type { Order } from "@/lib/types";
 
-export default async function OrdersPage() {
-    const orders = await getOrders();
+export default function OrdersPage() {
+    const { formatPrice } = useCurrency();
+    const [orders, setOrders] = useState<Order[]>([]);
+
+    useEffect(() => {
+        async function fetchOrders() {
+            const fetchedOrders = await getOrders();
+            setOrders(fetchedOrders);
+        }
+        fetchOrders();
+    }, []);
 
     return (
         <Card>
@@ -36,7 +51,7 @@ export default async function OrdersPage() {
                                             <Badge variant={order.status === 'Delivered' ? 'default' : 'secondary'} className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                                 {order.status}
                                             </Badge>
-                                            <p className="font-semibold">${order.total.toFixed(2)}</p>
+                                            <p className="font-semibold">{formatPrice(order.total)}</p>
                                         </div>
                                     </div>
                                 </AccordionTrigger>
@@ -60,7 +75,7 @@ export default async function OrdersPage() {
                                                     </TableCell>
                                                     <TableCell className="font-medium">{item.product.name}</TableCell>
                                                     <TableCell>{item.quantity}</TableCell>
-                                                    <TableCell className="text-right">${item.product.price.toFixed(2)}</TableCell>
+                                                    <TableCell className="text-right">{formatPrice(item.product.price)}</TableCell>
                                                 </TableRow>
                                             ))}
                                         </TableBody>
