@@ -53,7 +53,18 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
     const rate = rates[currency] || 1;
     const convertedPrice = price * rate;
     const symbol = currencySymbols[currency] || '$';
-    return `${symbol}${convertedPrice.toFixed(2)}`;
+    
+    // Using Intl.NumberFormat for better locale-aware formatting
+    try {
+      return new Intl.NumberFormat(undefined, {
+        style: 'currency',
+        currency: currency,
+        currencyDisplay: 'symbol'
+      }).format(convertedPrice);
+    } catch (e) {
+      // Fallback for any unsupported currency codes, though our list is fixed.
+      return `${symbol}${convertedPrice.toFixed(2)}`;
+    }
   };
   
 
