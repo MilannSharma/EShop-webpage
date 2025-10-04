@@ -32,18 +32,18 @@ function Logo() {
         fontSize="48" 
         fontWeight="bold"
         fill="black"
-        className="animate-drop-l"
+        className="animate-bubble-up-l"
       >
         L
       </text>
       <text 
-        x="19" 
-        y="55" 
+        x="17" 
+        y="57" 
         fontFamily="Playfair Display, serif" 
         fontSize="36" 
         fontWeight="bold"
         fill="black"
-        className="animate-drop-c"
+        className="animate-bubble-up-c"
       >
         C
       </text>

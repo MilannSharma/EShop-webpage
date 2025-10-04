@@ -64,34 +64,27 @@ body {
   }
 }
 
-@keyframes drop-l {
-  0%, 100% {
-    transform: translateY(-100%);
+@keyframes bubble-up {
+  0% {
+    transform: translateY(30%) scale(0.9);
     opacity: 0;
   }
-  20%, 80% {
-    transform: translateY(0);
+  50% {
+    transform: translateY(0) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-5%) scale(1);
     opacity: 1;
   }
 }
 
-@keyframes drop-c {
-  0%, 100% {
-    transform: translateY(-150%);
-    opacity: 0;
-  }
-  30%, 70% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.animate-bubble-up-l {
+  animation: bubble-up 2s ease-in-out forwards;
 }
 
-.animate-drop-l {
-  animation: drop-l 2.5s ease-out infinite;
-}
-
-.animate-drop-c {
-  animation: drop-c 2.5s ease-out infinite;
+.animate-bubble-up-c {
+  animation: bubble-up 2s ease-in-out forwards;
   animation-delay: 0.2s;
   opacity: 0;
 }
