@@ -18,26 +18,26 @@ const navLinks = [
 
 const Logo = () => (
     <svg 
-      width="60" 
-      height="40" 
+      width="90" 
+      height="60" 
       viewBox="0 0 100 100" 
       className="fill-current text-foreground"
       xmlns="http://www.w3.org/2000/svg"
     >
       <text 
-        x="10" 
-        y="80" 
+        x="5" 
+        y="85" 
         fontFamily="Playfair Display, serif" 
-        fontSize="80" 
+        fontSize="90" 
         fontWeight="bold"
       >
         L
       </text>
       <text 
-        x="35" 
-        y="85" 
+        x="40" 
+        y="90" 
         fontFamily="Playfair Display, serif" 
-        fontSize="60"
+        fontSize="70"
         fontWeight="bold"
       >
         C
@@ -56,7 +56,7 @@ export function Header() {
 
   return (
     <header className="bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex h-24 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-start">
           <Link href="/" className="flex items-center gap-2">
             <Logo />
