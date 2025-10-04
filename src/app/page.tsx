@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <div className="space-y-24">
       {/* Hero Carousel Section */}
-      <section className="w-full">
+      <section className="w-full -mt-8">
         <Carousel
           opts={{ loop: true }}
           className="w-full"
