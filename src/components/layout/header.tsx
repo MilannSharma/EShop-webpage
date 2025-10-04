@@ -21,11 +21,7 @@ import {
 import { navItems } from '@/lib/nav-data';
 
 
-interface HeaderProps {
-    isSidebarOpen: boolean;
-}
-
-export function Header({ isSidebarOpen }: HeaderProps) {
+export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
