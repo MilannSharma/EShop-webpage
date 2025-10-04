@@ -32,18 +32,16 @@ function Logo() {
         fontSize="48" 
         fontWeight="bold"
         fill="black"
-        className="animate-bubble-up-l"
       >
         L
       </text>
       <text 
-        x="15" 
-        y="57" 
+        x="13" 
+        y="58" 
         fontFamily="Playfair Display, serif" 
         fontSize="36" 
         fontWeight="bold"
         fill="black"
-        className="animate-bubble-up-c"
       >
         C
       </text>
@@ -59,7 +57,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
-          <span className="font-headline text-3xl font-bold tracking-tight text-primary">
+          <span className="font-headline text-4xl font-bold tracking-tight text-primary">
             Lakshita Collection
           </span>
         </Link>
