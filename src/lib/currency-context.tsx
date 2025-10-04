@@ -53,7 +53,10 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
     const rate = rates[currency] || 1;
     const convertedPrice = price * rate;
     
-    const locale = currency === 'INR' ? 'en-IN' : undefined;
+    let locale;
+    if (currency === 'INR') {
+        locale = 'en-IN';
+    }
 
     // Using Intl.NumberFormat for better locale-aware formatting
     try {
