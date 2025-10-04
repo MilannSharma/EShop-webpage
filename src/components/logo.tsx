@@ -7,14 +7,12 @@ export function Logo({ className }: { className?: string }) {
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
       className={cn("fill-current", className)}
-      // Using a path for the 'LC' logo to match the image provided
     >
-        <g transform="translate(5, 18) scale(0.8)">
+        <g transform="translate(12, 18) scale(0.85)">
             {/* L */}
-            <path transform="translate(0, -10)" d="M 29.5 8.5 L 29.5 75.5 L 59.5 75.5 L 59.5 83.5 L 21.5 83.5 L 21.5 8.5 L 29.5 8.5 Z" />
-
+            <path d="M25,15 h8 v55 h-8 z M25,70 h30 v8 h-38 v-8 h8 z" />
             {/* C */}
-            <path transform="translate(0, 16)" d="M 83.31 29.53 C 80.31 22.33 73.68 17.69 64.92 17.69 C 49.38 17.69 40.5 31.79 40.5 49.41 C 40.5 67.03 49.38 81.13 64.92 81.13 C 73.68 81.13 80.31 76.49 83.31 69.29 L 75.07 69.29 C 72.88 73.18 69.17 75.31 64.92 75.31 C 53.69 75.31 48.06 64.5 48.06 49.41 C 48.06 34.32 53.69 23.51 64.92 23.51 C 69.17 23.51 72.88 25.64 75.07 29.53 L 83.31 29.53 Z" />
+            <path d="M85,35 A30,30 0 0,0 55,5 q-15,0 -25,12 q-8,10 -8,25 q0,15 8,25 q10,12 25,12 q10,0 18,-7 l-5,-6 q-6,5 -13,5 q-12,0 -18,-8 q-8,-8 -8,-19 q0,-11 8,-19 q6,-8 18,-8 q10,0 16,7 l5,-6 z" />
       </g>
     </svg>
   );
