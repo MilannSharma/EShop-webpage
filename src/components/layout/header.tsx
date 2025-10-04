@@ -32,16 +32,18 @@ function Logo() {
         fontSize="48" 
         fontWeight="bold"
         fill="black"
+        className=""
       >
         L
       </text>
       <text 
-        x="12" 
-        y="45" 
+        x="9.5" 
+        y="37" 
         fontFamily="Playfair Display, serif" 
         fontSize="36" 
         fontWeight="bold"
         fill="black"
+        className=""
       >
         C
       </text>
@@ -57,7 +59,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
-          <span className="font-headline text-5xl font-bold tracking-tight text-primary" style={{color: 'hsl(var(--primary))'}}>
+          <span className="font-headline text-2xl font-bold tracking-tight text-primary" style={{color: 'hsl(var(--primary))'}}>
             Lakshita Collection
           </span>
         </Link>
