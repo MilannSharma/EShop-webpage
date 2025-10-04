@@ -31,19 +31,19 @@ function Logo() {
         fontFamily="Playfair Display, serif" 
         fontSize="48" 
         fontWeight="bold"
-        fill="black"
-        className=""
+        fill="currentColor"
+        className="text-foreground"
       >
         L
       </text>
       <text 
         x="22" 
-        y="28" 
+        y="50" 
         fontFamily="Playfair Display, serif" 
         fontSize="36" 
         fontWeight="bold"
-        fill="black"
-        className=""
+        fill="currentColor"
+        className="text-foreground"
       >
         C
       </text>
