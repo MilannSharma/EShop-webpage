@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 
 export function Logo({ className }: { className?: string }) {
@@ -8,11 +7,11 @@ export function Logo({ className }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       className={cn("fill-current", className)}
     >
-        <g transform="translate(12, 18) scale(0.85)">
-            {/* L */}
-            <path d="M25,15 h8 v55 h-8 z M25,70 h30 v8 h-38 v-8 h8 z" />
-            {/* C */}
-            <path d="M85,35 A30,30 0 0,0 55,5 q-15,0 -25,12 q-8,10 -8,25 q0,15 8,25 q10,12 25,12 q10,0 18,-7 l-5,-6 q-6,5 -13,5 q-12,0 -18,-8 q-8,-8 -8,-19 q0,-11 8,-19 q6,-8 18,-8 q10,0 16,7 l5,-6 z" />
+      <g transform="translate(5, 10) scale(1.2)">
+        {/* L */}
+        <path d="M25,15 h8 v50 h-8 z M23,73 h32 v8 h-40 v-8 h8 z" transform="translate(0, -5)" />
+        {/* C */}
+        <path d="M75,55 C75,74 65,85 50,85 C35,85 25,74 25,55 C25,36 35,25 50,25 C60,25 68,30 72,38 L64,42 C62,37 57,33 50,33 C40,33 33,42 33,55 C33,68 40,77 50,77 C60,77 67,68 67,55 L75,55 Z" transform="translate(0, 0)" />
       </g>
     </svg>
   );
