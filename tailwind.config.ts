@@ -18,8 +18,6 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Lora', 'serif'],
-        headline: ['Playfair Display', 'serif'],
         code: ['monospace'],
       },
       colors: {
