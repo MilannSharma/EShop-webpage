@@ -8,7 +8,7 @@ export function Logo({ className }: { className?: string }) {
       className={cn("fill-current", className)}
       // Using a path for the 'LC' logo to match the image provided
     >
-        <g transform="translate(5, 15) scale(0.8)">
+        <g transform="translate(5, 18) scale(0.8)">
             {/* L */}
             <path d="M 29.5 8.5 L 29.5 75.5 L 59.5 75.5 L 59.5 83.5 L 21.5 83.5 L 21.5 8.5 L 29.5 8.5 Z" />
 
