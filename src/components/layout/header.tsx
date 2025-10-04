@@ -20,36 +20,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const Logo = () => (
-    <svg
-      width="45"
-      height="60"
-      viewBox="0 0 100 100"
-      className="fill-current"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <text
-        x="24.5"
-        y="85"
-        fontFamily="Playfair Display, serif"
-        fontSize="90"
-        fontWeight="bold"
-      >
-        L
-      </text>
-      <text
-        x="26"
-        y="98"
-        fontFamily="Playfair Display, serif"
-        fontSize="70"
-        fontWeight="bold"
-      >
-        C
-      </text>
-    </svg>
-)
-
-
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toggleSidebar } = useSidebar();
@@ -66,9 +36,8 @@ export function Header() {
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle Sidebar</span>
           </Button>
-          <Link href="/" className="flex items-center gap-0 -ml-2">
-            <Logo />
-            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground -ml-1">akshita Creation</span>
+          <Link href="/" className="flex items-center gap-2">
+            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground">Lakshita Creation</span>
           </Link>
         </div>
         
@@ -81,8 +50,8 @@ export function Header() {
         </nav>
 
         <div className="flex items-center justify-end gap-2">
-          <div className="flex items-center gap-2">
-            
+          <div className="hidden md:flex items-center gap-2">
+            <CurrencySelector />
             <Button variant="ghost" size="icon" asChild>
               <Link href="/account">
                 <User className="h-5 w-5" />
@@ -98,7 +67,6 @@ export function Header() {
               <SheetContent side="left" className="w-full max-w-sm overflow-y-auto">
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Logo />
                     <span className="font-bold font-headline text-lg text-secondary-foreground">Lakshita Creation</span>
                   </Link>
                   <nav className="flex flex-col gap-4 text-lg font-medium">
