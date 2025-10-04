@@ -8,6 +8,7 @@ export function Logo({ className }: { className?: string }) {
       className={cn("fill-current", className)}
     >
       <g transform="translate(15, 10) scale(0.9)">
+        {/* L */}
         <path
           d="M32 20 H38 V70 H32 Z"
           fill="currentColor"
@@ -16,12 +17,20 @@ export function Logo({ className }: { className?: string }) {
           d="M32 70 H55 V76 H32 Z"
           fill="currentColor"
         />
+        {/* G */}
         <path
-          d="M65 25 C 40 25, 40 65, 65 65 C 75 65, 80 60, 80 50 C 80 40, 75 35, 65 35 C 55 35, 50 40, 50 50"
+          d="M80 50 C 80 60, 75 65, 65 65 C 40 65, 40 25, 65 25 C 75 25, 80 30, 80 40"
           stroke="currentColor"
           strokeWidth="6"
           fill="none"
           strokeLinecap="round"
+        />
+        <path
+            d="M65 48 H80"
+            stroke="currentColor"
+            strokeWidth="6"
+            fill="none"
+            strokeLinecap="round"
         />
       </g>
     </svg>
