@@ -65,32 +65,33 @@ body {
 }
 
 @keyframes drop-l {
-  0% {
+  0%, 100% {
     transform: translateY(-100%);
     opacity: 0;
   }
-  100% {
+  20%, 80% {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
 @keyframes drop-c {
-  0% {
+  0%, 100% {
     transform: translateY(-150%);
     opacity: 0;
   }
-  100% {
+  30%, 70% {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
 .animate-drop-l {
-  animation: drop-l 0.5s ease-out forwards;
+  animation: drop-l 2.5s ease-out infinite;
 }
 
 .animate-drop-c {
-  animation: drop-c 0.5s ease-out 0.2s forwards;
+  animation: drop-c 2.5s ease-out infinite;
+  animation-delay: 0.2s;
   opacity: 0;
 }
