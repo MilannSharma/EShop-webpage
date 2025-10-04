@@ -125,17 +125,6 @@ export default async function Home() {
         </Carousel>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-card w-full text-center py-20">
-        <div className="container mx-auto">
-          <p className="text-sm uppercase tracking-widest text-foreground/60">Testimonials</p>
-          <blockquote className="mt-6 max-w-2xl mx-auto text-2xl md:text-3xl font-headline">
-            "More than expected, crazy soft, flexible and best fitted white simple denim shirt."
-          </blockquote>
-          <div className="mt-6 text-sm text-foreground/80">- Sarah J.</div>
-        </div>
-      </section>
-
       {/* Newsletter */}
       <section className="container mx-auto text-center py-12">
         <h2 className="text-3xl font-headline tracking-tight">Sign Up For Our Newsletter</h2>
