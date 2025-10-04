@@ -133,6 +133,9 @@ export default async function Home() {
 
       {/* Offers Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Offers</h2>
+        </div>
         <div className="grid md:grid-cols-2 gap-8">
             {springOfferImage && (
                 <div className="relative bg-secondary/30 flex justify-between items-center overflow-hidden">
