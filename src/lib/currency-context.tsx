@@ -52,17 +52,19 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const formatPrice = (price: number) => {
     const rate = rates[currency] || 1;
     const convertedPrice = price * rate;
-    const symbol = currencySymbols[currency] || '$';
     
+    const locale = currency === 'INR' ? 'en-IN' : undefined;
+
     // Using Intl.NumberFormat for better locale-aware formatting
     try {
-      return new Intl.NumberFormat(undefined, {
+      return new Intl.NumberFormat(locale, {
         style: 'currency',
         currency: currency,
         currencyDisplay: 'symbol'
       }).format(convertedPrice);
     } catch (e) {
       // Fallback for any unsupported currency codes, though our list is fixed.
+      const symbol = currencySymbols[currency] || '$';
       return `${symbol}${convertedPrice.toFixed(2)}`;
     }
   };
