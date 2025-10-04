@@ -61,32 +61,6 @@ export default async function Home() {
         </Carousel>
       </section>
       
-      {/* Features Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-y py-12">
-          <div className="flex flex-col items-center">
-            <Phone className="w-8 h-8 text-foreground/80"/>
-            <h3 className="mt-4 font-semibold">Book An Appointment</h3>
-            <p className="mt-2 text-sm text-foreground/60">Schedule a virtual or in-person consultation.</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Box className="w-8 h-8 text-foreground/80"/>
-            <h3 className="mt-4 font-semibold">Pick Up In Store</h3>
-            <p className="mt-2 text-sm text-foreground/60">Convenient pickup at our flagship location.</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Gift className="w-8 h-8 text-foreground/80"/>
-            <h3 className="mt-4 font-semibold">Special Packaging</h3>
-            <p className="mt-2 text-sm text-foreground/60">Beautifully wrapped for the perfect gift.</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <CreditCard className="w-8 h-8 text-foreground/80"/>
-            <h3 className="mt-4 font-semibold">Free Global Returns</h3>
-            <p className="mt-2 text-sm text-foreground/60">Hassle-free returns on all orders worldwide.</p>
-          </div>
-        </div>
-      </section>
-
       {/* Product Carousel */}
       <section id="products" className="scroll-mt-20 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
