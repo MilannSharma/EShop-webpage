@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { User, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/cart/cart-icon';
@@ -30,14 +29,7 @@ export function Header() {
       <div className="container mx-auto flex h-auto flex-col items-center px-4 sm:px-6 lg:px-8 py-2">
         <div className={`transition-opacity duration-1000 ease-in ${hasLoaded ? 'opacity-100' : 'opacity-0'}`}>
           <Link href="/" className="flex justify-center py-[10px]">
-            <Image
-              src="/lakshita_logo.png"
-              alt="Lakshita Collections Logo"
-              width={120}
-              height={120} // placeholder, height will be auto
-              className="h-auto w-[80px] md:w-[120px]"
-              priority
-            />
+            <h1 className="text-2xl md:text-3xl font-bold font-headline">Lakshita Collection</h1>
           </Link>
         </div>
         <div className="flex h-16 w-full items-center justify-between">
