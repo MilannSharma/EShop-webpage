@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { User, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/cart/cart-icon';
@@ -9,103 +10,76 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/pattern-generator', label: 'AI Pattern Generator' },
 ];
 
-function Logo() {
-  return (
-    <svg 
-      width="48" 
-      height="48" 
-      viewBox="0 0 52 52" 
-      xmlns="http://www.w3.org/2000/svg"
-      className="overflow-visible"
-    >
-      <text 
-        x="2" 
-        y="42" 
-        fontFamily="Playfair Display, serif" 
-        fontSize="48" 
-        fontWeight="bold"
-        fill="currentColor"
-        className="text-foreground"
-      >
-        L
-      </text>
-      <text 
-        x="25" 
-        y="32" 
-        fontFamily="Playfair Display, serif" 
-        fontSize="36" 
-        fontWeight="bold"
-        fill="currentColor"
-        className="text-foreground"
-      >
-        C
-      </text>
-    </svg>
-  )
-}
-
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    setHasLoaded(true);
+  }, []);
 
   return (
     <header className="bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo />
-          <span className="font-headline text-2xl font-bold tracking-tight text-primary" style={{color: 'hsl(var(--primary))'}}>
-            Lakshita Collection
-          </span>
-        </Link>
-        
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          {navLinks.map(({ href, label }) => (
-            <Link key={href} href={href} className="text-foreground/70 transition-colors hover:text-foreground">
-              {label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/account">
-              <User className="h-5 w-5" />
-              <span className="sr-only">Account</span>
-            </Link>
-          </Button>
-          <CartIcon />
+      <div className="container mx-auto flex h-auto flex-col items-center px-4 sm:px-6 lg:px-8 py-2">
+        <div className={`transition-opacity duration-1000 ease-in ${hasLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          <Link href="/" className="flex justify-center py-[10px]">
+            <Image
+              src="/lakshita_logo.png"
+              alt="Lakshita Collections Logo"
+              width={120}
+              height={120} // placeholder, height will be auto
+              className="h-auto w-[80px] md:w-[120px]"
+              priority
+            />
+          </Link>
+        </div>
+        <div className="flex h-16 w-full items-center justify-between">
+          <div className="md:hidden">
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left">
+                <div className="flex flex-col gap-6 pt-8">
+                  <nav className="flex flex-col gap-4 text-lg font-medium">
+                    {navLinks.map(({ href, label }) => (
+                      <Link key={href} href={href} onClick={() => setIsMobileMenuOpen(false)} className="text-foreground/70 transition-colors hover:text-foreground">
+                        {label}
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
           
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Open menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left">
-              <div className="flex flex-col gap-6 pt-8">
-                <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Logo />
-                  <span className="font-headline text-3xl font-bold tracking-tight text-primary">
-                    Lakshita Collection
-                  </span>
-                </Link>
-                <nav className="flex flex-col gap-4 text-lg font-medium">
-                  {navLinks.map(({ href, label }) => (
-                    <Link key={href} href={href} onClick={() => setIsMobileMenuOpen(false)} className="text-foreground/70 transition-colors hover:text-foreground">
-                      {label}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <nav className="hidden md:flex flex-1 justify-center items-center gap-6 text-sm font-medium">
+            {navLinks.map(({ href, label }) => (
+              <Link key={href} href={href} className="text-foreground/70 transition-colors hover:text-foreground">
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="/account">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Account</span>
+              </Link>
+            </Button>
+            <CartIcon />
+          </div>
         </div>
       </div>
     </header>
