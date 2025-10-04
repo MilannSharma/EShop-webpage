@@ -29,7 +29,7 @@ const Logo = () => (
       xmlns="http://www.w3.org/2000/svg"
     >
       <text
-        x="5"
+        x="24.5"
         y="85"
         fontFamily="Playfair Display, serif"
         fontSize="90"
@@ -38,8 +38,8 @@ const Logo = () => (
         L
       </text>
       <text
-        x="26.5"
-        y="99"
+        x="26"
+        y="98"
         fontFamily="Playfair Display, serif"
         fontSize="70"
         fontWeight="bold"
@@ -71,7 +71,7 @@ export function Header() {
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle Sidebar</span>
           </Button>
-          <Link href="/" className="flex items-center gap-0 -ml-2.5">
+          <Link href="/" className="flex items-center gap-0 -ml-2">
             <Logo />
             <span className="font-bold font-headline text-2xl hidden sm:inline-block text-secondary-foreground -ml-1">Lakshita Creation</span>
           </Link>
@@ -87,7 +87,7 @@ export function Header() {
 
         <div className="flex items-center justify-end gap-2">
           <div className="hidden md:flex items-center gap-2">
-            <CurrencySelector />
+            
             <Button variant="ghost" size="icon" asChild>
               <Link href="/account">
                 <User className="h-5 w-5" />
