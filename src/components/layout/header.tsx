@@ -21,7 +21,7 @@ const Logo = () => (
       width="120" 
       height="80" 
       viewBox="0 0 100 100" 
-      className="fill-current text-foreground"
+      className="fill-current text-primary"
       xmlns="http://www.w3.org/2000/svg"
     >
       <text 
@@ -60,11 +60,11 @@ export function Header() {
         <div className="flex items-center justify-start">
           <Link href="/" className="flex items-center gap-2">
             <Logo />
-            <span className="font-bold font-headline text-2xl hidden sm:inline-block text-primary">Lakshita Creation</span>
+            <span className="font-bold font-headline text-3xl hidden sm:inline-block text-secondary-foreground">Lakshita Creation</span>
           </Link>
         </div>
         
-        <nav className="flex-grow flex justify-center items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex flex-grow justify-center items-center gap-6 text-sm font-medium">
           {navLinks.map(({ href, label }) => (
             <Link key={href} href={href} className="text-foreground/70 transition-colors hover:text-foreground">
               {label}
@@ -95,7 +95,7 @@ export function Header() {
                 <div className="flex flex-col gap-6 pt-8">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                     <Logo />
-                    <span className="font-bold font-headline text-lg text-primary">Lakshita Creation</span>
+                    <span className="font-bold font-headline text-lg text-secondary-foreground">Lakshita Creation</span>
                   </Link>
                   <nav className="flex flex-col gap-4 text-lg font-medium">
                     {navLinks.map(({ href, label }) => (
