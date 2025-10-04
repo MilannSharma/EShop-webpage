@@ -22,8 +22,8 @@ function Logo() {
       width="48" 
       height="48" 
       viewBox="0 0 52 52" 
-      fill="black" 
       xmlns="http://www.w3.org/2000/svg"
+      className="overflow-visible"
     >
       <text 
         x="2" 
@@ -31,15 +31,19 @@ function Logo() {
         fontFamily="Playfair Display, serif" 
         fontSize="48" 
         fontWeight="bold"
+        fill="black"
+        className="animate-drop-l"
       >
         L
       </text>
       <text 
-        x="14" 
-        y="52" 
+        x="20" 
+        y="54" 
         fontFamily="Playfair Display, serif" 
         fontSize="36" 
         fontWeight="bold"
+        fill="black"
+        className="animate-drop-c"
       >
         C
       </text>
@@ -55,7 +59,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
-          <span className="font-headline text-2xl font-bold tracking-tight text-primary">
+          <span className="font-headline text-3xl font-bold tracking-tight text-primary">
             Lakshita Collection
           </span>
         </Link>
@@ -88,7 +92,7 @@ export function Header() {
               <div className="flex flex-col gap-6 pt-8">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                   <Logo />
-                  <span className="font-headline text-2xl font-bold tracking-tight text-primary">
+                  <span className="font-headline text-3xl font-bold tracking-tight text-primary">
                     Lakshita Collection
                   </span>
                 </Link>

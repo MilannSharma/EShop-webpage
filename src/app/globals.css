@@ -63,3 +63,34 @@ body {
     @apply font-headline;
   }
 }
+
+@keyframes drop-l {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes drop-c {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-drop-l {
+  animation: drop-l 0.5s ease-out forwards;
+}
+
+.animate-drop-c {
+  animation: drop-c 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
