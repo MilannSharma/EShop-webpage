@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A vibrant and colorful arrangement of various textile patterns and spools of thread.",
+      "imageUrl": "https://images.unsplash.com/photo-1669124806257-e25123539e2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dGV4dGlsZSUyMHdvcmtzaG9wfGVufDB8fHx8MTc1OTYwNTM2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "textile workshop"
+    },
+    {
+      "id": "prod1",
+      "description": "A luxurious silk scarf with a paisley pattern in shades of blue and gold.",
+      "imageUrl": "https://images.unsplash.com/photo-1637273472424-902dea95b78e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzaWxrJTIwc2NhcmZ8ZW58MHx8fHwxNzU5NTYwMDM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "silk scarf"
+    },
+    {
+      "id": "prod2",
+      "description": "A bolt of soft, organic cotton fabric in a natural, unbleached color.",
+      "imageUrl": "https://images.unsplash.com/photo-1606343131474-abc41dc6bb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb3R0b24lMjBmYWJyaWN8ZW58MHx8fHwxNzU5NDkyNzA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cotton fabric"
+    },
+    {
+      "id": "prod3",
+      "description": "Hand-dyed linen textile with a subtle, earthy green tie-dye pattern.",
+      "imageUrl": "https://images.unsplash.com/photo-1606689282511-9f080ab7c09f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsaW5lbiUyMHRleHRpbGV8ZW58MHx8fHwxNzU5NjA1MzcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "linen textile"
+    },
+    {
+      "id": "prod4",
+      "description": "An intricate brocade fabric with floral motifs woven in silver thread.",
+      "imageUrl": "https://images.unsplash.com/photo-1759471891453-e2601e2c332b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxicm9jYWRlJTIwZmFicmljfGVufDB8fHx8MTc1OTYwNTM2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "brocade fabric"
+    },
+    {
+      "id": "prod5",
+      "description": "A cozy wool throw blanket with a classic tartan pattern in red and black.",
+      "imageUrl": "https://images.unsplash.com/photo-1695758602756-874bbf90b71d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b29sJTIwYmxhbmtldHxlbnwwfHx8fDE3NTk1ODUzMTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wool blanket"
+    },
+    {
+      "id": "prod6",
+      "description": "A roll of vibrant velvet fabric in a deep magenta color.",
+      "imageUrl": "https://images.unsplash.com/photo-1738722637230-0d7cbf6c3d36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx2ZWx2ZXQlMjBmYWJyaWN8ZW58MHx8fHwxNzU5NjA1MzY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "velvet fabric"
+    }
+  ]
 }
