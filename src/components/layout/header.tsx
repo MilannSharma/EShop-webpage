@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { User, Menu, Search, Heart, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { User, Menu, Search, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/cart/cart-icon';
 import {
@@ -19,11 +19,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { navItems } from '@/lib/nav-data';
-import { useSidebar } from '@/lib/sidebar-context';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isSidebarOpen, toggleSidebar } = useSidebar();
 
   return (
     <header className="w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40">
@@ -91,11 +89,7 @@ export function Header() {
                 </div>
               </SheetContent>
             </Sheet>
-          <Button variant="ghost" size="icon" onClick={toggleSidebar} className="hidden md:inline-flex">
-            {isSidebarOpen ? <PanelLeftClose /> : <PanelLeftOpen />}
-            <span className="sr-only">Toggle Sidebar</span>
-          </Button>
-          <Link href="/" className="flex items-center gap-2 ml-2 md:ml-4">
+          <Link href="/" className="flex items-center gap-2 ml-2 md:ml-0">
             <span className="font-bold font-headline text-2xl text-secondary-foreground tracking-wider">Lakshita Creations</span>
           </Link>
         </div>

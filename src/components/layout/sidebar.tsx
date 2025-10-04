@@ -11,20 +11,15 @@ import {
 } from '@/components/ui/accordion';
 import { navItems } from '@/lib/nav-data';
 import { cn } from '@/lib/utils';
-import { useSidebar } from '@/lib/sidebar-context';
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { isSidebarOpen } = useSidebar();
 
   return (
     <aside
-      className={cn(
-        "hidden md:block flex-shrink-0 border-r bg-sidebar text-sidebar-foreground transition-all duration-300 ease-in-out",
-        isSidebarOpen ? "w-64" : "w-0 overflow-hidden"
-      )}
+      className="hidden md:block w-64 flex-shrink-0 border-r bg-sidebar text-sidebar-foreground"
     >
-      <div className={cn("h-full p-4", isSidebarOpen ? "opacity-100" : "opacity-0")}>
+      <div className="h-full p-4">
         <h2 className="px-4 pb-2 text-lg font-semibold tracking-tight text-sidebar-primary-foreground">
           Product Categories
         </h2>

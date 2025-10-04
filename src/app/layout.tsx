@@ -8,7 +8,6 @@ import { CartProvider } from '@/lib/cart-context';
 import { CurrencyProvider } from '@/lib/currency-context';
 import { MainContent } from '@/components/layout/main-content';
 import { Sidebar } from '@/components/layout/sidebar';
-import { SidebarProvider } from '@/lib/sidebar-context';
 
 export const metadata: Metadata = {
   title: 'Lakshita Creations',
@@ -48,9 +47,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <CurrencyProvider>
           <CartProvider>
-            <SidebarProvider>
               <AppLayout>{children}</AppLayout>
-            </SidebarProvider>
             <Toaster />
           </CartProvider>
         </CurrencyProvider>
