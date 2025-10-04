@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import ProductGrid from "@/components/products/product-grid";
 import Image from "next/image";
