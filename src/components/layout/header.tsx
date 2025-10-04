@@ -16,6 +16,38 @@ const navLinks = [
   { href: '/pattern-generator', label: 'AI Pattern Generator' },
 ];
 
+function Logo() {
+  return (
+    <svg 
+      width="48" 
+      height="48" 
+      viewBox="0 0 52 52" 
+      fill="currentColor" 
+      xmlns="http://www.w3.org/2000/svg"
+      className="text-primary"
+    >
+      <text 
+        x="2" 
+        y="42" 
+        fontFamily="Playfair Display, serif" 
+        fontSize="48" 
+        fontWeight="bold"
+      >
+        L
+      </text>
+      <text 
+        x="20" 
+        y="46" 
+        fontFamily="Playfair Display, serif" 
+        fontSize="36" 
+        fontWeight="bold"
+      >
+        C
+      </text>
+    </svg>
+  )
+}
+
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,7 +55,7 @@ export function Header() {
     <header className="bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <div className="font-headline text-4xl font-bold text-primary">LC</div>
+          <Logo />
           <span className="font-headline text-xl font-bold tracking-tight">
             Lakshita Collection
           </span>
@@ -56,7 +88,7 @@ export function Header() {
             <SheetContent side="left">
               <div className="flex flex-col gap-6 pt-8">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <div className="font-headline text-4xl font-bold text-primary">LC</div>
+                  <Logo />
                   <span className="font-headline text-xl font-bold tracking-tight">
                     Lakshita Collection
                   </span>
