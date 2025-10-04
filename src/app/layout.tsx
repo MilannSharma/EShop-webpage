@@ -6,8 +6,8 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster"
 import { CartProvider } from '@/lib/cart-context';
 import { CurrencyProvider } from '@/lib/currency-context';
-import { cn } from '@/lib/utils';
 import { MainContent } from '@/components/layout/main-content';
+import { Sidebar } from '@/components/layout/sidebar';
 
 export const metadata: Metadata = {
   title: 'Lakshita Creations',
@@ -32,9 +32,14 @@ export default function RootLayout({
           <CartProvider>
               <div className="flex min-h-screen flex-col">
                 <Header />
-                <MainContent>
-                  {children}
-                </MainContent>
+                <div className="flex flex-1">
+                  <Sidebar />
+                  <MainContent>
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                      {children}
+                    </div>
+                  </MainContent>
+                </div>
                 <Footer />
               </div>
               <Toaster />

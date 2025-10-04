@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from "@/components/ui/button";
@@ -30,7 +31,7 @@ export default function CheckoutPage() {
     }
 
     return (
-        <div className="max-w-5xl mx-auto">
+        <>
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Checkout</h1>
             <div className="grid lg:grid-cols-2 gap-12">
                 <div className="space-y-8">
@@ -43,7 +44,7 @@ export default function CheckoutPage() {
                                 <div className="space-y-2">
                                     <Label htmlFor="first-name">First Name</Label>
                                     <Input id="first-name" placeholder="John" />
-                                </div>
+                                inudiv>
                                 <div className="space-y-2">
                                     <Label htmlFor="last-name">Last Name</Label>
                                     <Input id="last-name" placeholder="Doe" />
@@ -134,6 +135,6 @@ export default function CheckoutPage() {
                     </Button>
                 </div>
             </div>
-        </div>
+        </>
     );
 }

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { getProductById } from '@/lib/api';
