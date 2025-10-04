@@ -6,22 +6,18 @@ import Link from "next/link";
 import placeholderImages from '@/lib/placeholder-images.json';
 import { ArrowRight, Box, CreditCard, Gift, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import ProductCard from "@/components/products/product-card";
+import { getProducts } from "@/lib/api";
 
-export default function Home() {
+export default async function Home() {
   const heroImage = placeholderImages.placeholderImages.find(p => p.id === 'hero');
   const collectionImage = placeholderImages.placeholderImages.find(p => p.id === 'prod4');
 
-  const newCollectionProducts = [
-    placeholderImages.placeholderImages.find(p => p.id === 'prod1'),
-    placeholderImages.placeholderImages.find(p => p.id === 'prod2'),
-    placeholderImages.placeholderImages.find(p => p.id === 'prod3'),
-  ];
+  const products = await getProducts();
 
-  const bestSellingProducts = [
-    placeholderImages.placeholderImages.find(p => p.id === 'prod4'),
-    placeholderImages.placeholderImages.find(p => p.id === 'prod5'),
-    placeholderImages.placeholderImages.find(p => p.id === 'prod6'),
-  ];
+  const newCollectionProducts = products.slice(0, 3);
+  const bestSellingProducts = products.slice(3, 6);
 
 
   return (
@@ -50,7 +46,7 @@ export default function Home() {
                   </div>
                 </Link>
                 <div className="mt-4 text-left">
-                  <h3 className="font-semibold text-lg">{product.description.split('.')[0]}</h3>
+                  <h3 className="font-semibold text-lg">{product.name}</h3>
                   <p className="text-sm text-foreground/60 mt-1">A fine piece from our latest collection.</p>
                   <Button variant="link" asChild className="mt-2 px-0">
                     <Link href={`/products/${product.id}`}>Shop Now</Link>
@@ -88,7 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Grid */}
+      {/* Product Carousel */}
       <section id="products" className="scroll-mt-20 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold tracking-tight">
@@ -96,7 +92,17 @@ export default function Home() {
           </h2>
           <Button variant="link">View All <ArrowRight className="ml-2 h-4 w-4"/></Button>
         </div>
-        <ProductGrid />
+        <Carousel opts={{ align: "start", loop: true }}>
+            <CarouselContent>
+                {products.map(product => (
+                    <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
+                        <ProductCard product={product} />
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+        </Carousel>
       </section>
 
       {/* Featured Collection */}
@@ -123,33 +129,23 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Best Selling */}
+      {/* Best Selling Carousel */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold tracking-tight">Best Selling Items</h2>
             <Button variant="link">View All <ArrowRight className="ml-2 h-4 w-4"/></Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {bestSellingProducts.map((product) => product && (
-            <div key={product.id}>
-              <Link href={`/products/${product.id}`} className="group block">
-                <div className="relative aspect-[3/4] w-full overflow-hidden">
-                  <Image
-                    src={product.imageUrl}
-                    alt={product.description}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    data-ai-hint={product.imageHint}
-                  />
-                </div>
-              </Link>
-              <div className="mt-4">
-                <h3 className="font-semibold">{product.description.split('.')[0]}</h3>
-                <p className="text-foreground/60">$99.00</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <Carousel opts={{ align: "start", loop: true }}>
+            <CarouselContent>
+                {bestSellingProducts.map(product => product && (
+                    <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
+                        <ProductCard product={product} />
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+        </Carousel>
       </section>
 
       {/* Testimonials */}
