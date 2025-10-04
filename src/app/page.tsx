@@ -9,9 +9,9 @@ import { Input } from "@/components/ui/input";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import ProductCard from "@/components/products/product-card";
 import { getProducts } from "@/lib/api";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default async function Home() {
-  const heroImage = placeholderImages.placeholderImages.find(p => p.id === 'hero');
   const collectionImage = placeholderImages.placeholderImages.find(p => p.id === 'prod4');
 
   const products = await getProducts();
@@ -22,40 +22,43 @@ export default async function Home() {
 
   return (
     <div className="space-y-24">
-      {/* Hero Section */}
-      <section className="text-center py-12">
-        <h1 className="text-4xl md:text-5xl font-headline tracking-tight">
-          New Collections
-        </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-foreground/60">
-          Discover our curated collection of exquisite textiles, crafted with passion and artistry. Explore the latest trends and timeless pieces that tell a story.
-        </p>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {newCollectionProducts.map((product) => product && (
-              <div key={product.id}>
-                <Link href={`/products/${product.id}`}>
-                  <div className="relative aspect-[3/4] w-full overflow-hidden">
-                    <Image
-                      src={product.imageUrl}
-                      alt={product.description}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      data-ai-hint={product.imageHint}
-                    />
+      {/* Hero Carousel Section */}
+      <section className="w-full">
+        <Carousel
+          opts={{ loop: true }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {newCollectionProducts.map((product) => (
+              <CarouselItem key={product.id}>
+                <div className="relative aspect-[16/7] w-full">
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.description}
+                    fill
+                    className="object-cover"
+                    data-ai-hint={product.imageHint}
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 lg:p-16 text-white">
+                    <h1 className="text-3xl md:text-5xl font-headline tracking-tight">
+                      {product.name}
+                    </h1>
+                    <p className="mt-4 max-w-lg text-white/80">
+                      Discover our curated collection of exquisite textiles, crafted with passion and artistry.
+                    </p>
+                    <Button asChild size="lg" className="mt-6">
+                      <Link href={`/products/${product.id}`}>Shop Now <ArrowRight className="ml-2" /></Link>
+                    </Button>
                   </div>
-                </Link>
-                <div className="mt-4 text-left">
-                  <h3 className="font-semibold text-lg">{product.name}</h3>
-                  <p className="text-sm text-foreground/60 mt-1">A fine piece from our latest collection.</p>
-                  <Button variant="link" asChild className="mt-2 px-0">
-                    <Link href={`/products/${product.id}`}>Shop Now</Link>
-                  </Button>
                 </div>
-              </div>
+              </CarouselItem>
             ))}
-          </div>
-        </div>
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
+        </Carousel>
       </section>
       
       {/* Features Section */}
