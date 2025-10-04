@@ -132,28 +132,6 @@ export function Sidebar() {
                 ))}
             </ul>
         </div>
-          <div className={cn("py-4 mt-auto border-t-sidebar-border border-t", isOpen ? "px-4" : "px-2")}>
-              <div className={cn("w-full flex items-center gap-x-4", !isOpen && "justify-center")}>
-                <img
-                  src="https://randomuser.me/api/portraits/women/79.jpg"
-                  className="w-10 h-10 rounded-full"
-                  alt="User avatar"
-                />
-                <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                      initial={{ opacity: 0}}
-                      animate={{ opacity: 1}}
-                      exit={{ opacity: 0}}
-                      transition={{duration: 0.2, delay: 0.15}}
-                  >
-                    <span className="block text-sidebar-foreground text-sm font-semibold">Alivika tony</span>
-                    <span className="block mt-px text-sidebar-muted-foreground text-xs">Hobby Plan</span>
-                  </motion.div>
-                )}
-                </AnimatePresence>
-              </div>
-          </div>
       </div>
     </motion.aside>
   );
