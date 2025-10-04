@@ -119,7 +119,36 @@ export function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
       )}
     >
       <div className="flex flex-col h-full px-4">
-          <div className="h-20 flex items-center pl-2">
+        <div className="flex-1 flex flex-col overflow-y-auto">
+            <ul className="text-sm font-medium flex-1 py-4">
+                {navItems.map((item, idx) => (
+                    <li key={idx}>
+                        <Menu items={item.links}>
+                            <div className="text-gray-500">
+                                <item.icon className="w-5 h-5" />
+                            </div>
+                            {item.title}
+                        </Menu>
+                    </li>
+                ))}
+            </ul>
+
+            <div className="pt-2 mt-auto border-t">
+              <ul className="text-sm font-medium">
+                {navsFooter.map((item, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href={item.href}
+                      className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg hover:bg-gray-50 active:bg-gray-100 duration-150"
+                    >
+                      <div className="text-gray-500">{item.icon}</div>
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="h-20 flex items-center pl-2 border-t">
             <div className="w-full flex items-center gap-x-4">
               <img
                 src="https://randomuser.me/api/portraits/women/79.jpg"
@@ -159,7 +188,7 @@ export function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
                   <div
                     id="profile-menu"
                     role="menu"
-                    className="absolute z-10 top-12 right-0 w-64 rounded-lg bg-white shadow-md border text-sm text-gray-600"
+                    className="absolute z-10 bottom-12 right-0 w-64 rounded-lg bg-white shadow-md border text-sm text-gray-600"
                   >
                     <div className="p-2 text-left">
                       <span className="block text-gray-500/80 p-2">alivika@gmail.com</span>
@@ -204,39 +233,9 @@ export function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
                 )}
               </div>
             </div>
-          </div>
-
-          <div className="overflow-auto">
-            <ul className="text-sm font-medium flex-1">
-                {navItems.map((item, idx) => (
-                    <li key={idx}>
-                        <Menu items={item.links}>
-                            <div className="text-gray-500">
-                                <item.icon className="w-5 h-5" />
-                            </div>
-                            {item.title}
-                        </Menu>
-                    </li>
-                ))}
-            </ul>
-
-            <div className="pt-2 mt-2 border-t">
-              <ul className="text-sm font-medium">
-                {navsFooter.map((item, idx) => (
-                  <li key={idx}>
-                    <Link
-                      href={item.href}
-                      className="flex items-center gap-x-2 text-gray-600 p-2 rounded-lg hover:bg-gray-50 active:bg-gray-100 duration-150"
-                    >
-                      <div className="text-gray-500">{item.icon}</div>
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
-        </div>
+      </div>
     </aside>
   );
 }
