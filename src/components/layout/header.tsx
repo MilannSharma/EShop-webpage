@@ -18,10 +18,10 @@ const navLinks = [
 
 const Logo = () => (
     <svg 
-      width="120" 
-      height="80" 
+      width="100" 
+      height="60" 
       viewBox="0 0 100 100" 
-      className="fill-current text-primary"
+      className="fill-current"
       xmlns="http://www.w3.org/2000/svg"
     >
       <text 
@@ -34,7 +34,7 @@ const Logo = () => (
         L
       </text>
       <text 
-        x="40" 
+        x="35" 
         y="90" 
         fontFamily="Playfair Display, serif" 
         fontSize="70"
