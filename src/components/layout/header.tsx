@@ -27,21 +27,21 @@ export function Header() {
   return (
     <header className="bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-6">
+        <div className="flex items-center justify-start">
           <Link href="/" className="flex items-center">
             <h1 className="text-2xl md:text-3xl font-bold font-headline">Lakshita Collection</h1>
           </Link>
-        
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            {navLinks.map(({ href, label }) => (
-              <Link key={href} href={href} className="text-foreground/70 transition-colors hover:text-foreground">
-                {label}
-              </Link>
-            ))}
-          </nav>
         </div>
+        
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          {navLinks.map(({ href, label }) => (
+            <Link key={href} href={href} className="text-foreground/70 transition-colors hover:text-foreground">
+              {label}
+            </Link>
+          ))}
+        </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2">
           <div className="hidden md:flex items-center gap-2">
             <Button variant="ghost" size="icon" asChild>
               <Link href="/account">
