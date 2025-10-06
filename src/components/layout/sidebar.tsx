@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState } from "react";
@@ -12,10 +11,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
+import { usePathname } from "next/navigation";
 
 
 const NavItem = ({ item, isOpen }: { item: typeof navItems[0]; isOpen: boolean }) => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="relative">
@@ -76,7 +77,12 @@ const NavItem = ({ item, isOpen }: { item: typeof navItems[0]; isOpen: boolean }
                 <li key={link.name}>
                     <Link
                     href={link.href}
-                    className="block p-2 text-sidebar-muted-foreground rounded-lg hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+                    className={cn(
+                        "block p-2 rounded-lg text-sm",
+                        pathname === link.href
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground font-semibold"
+                          : "text-sidebar-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                      )}
                     >
                     {link.name}
                     </Link>
