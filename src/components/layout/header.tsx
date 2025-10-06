@@ -45,13 +45,6 @@ export function Header() {
                     <img src="https://image2url.com/images/1759617767581-65797a2b-7c3e-4b96-bf8c-3bc2e9327652.png" alt="Logo" className="h-12 w-12 md:h-20 md:w-20" />
                     <span className="font-bold font-headline text-base md:text-lg text-secondary-foreground tracking-wider">Lakshita Creation</span>
                   </Link>
-                  <nav className="flex flex-col gap-4 text-lg font-medium">
-                    {navLinks.map(({ href, label }) => (
-                      <Link key={href} href={href} onClick={() => setIsMobileMenuOpen(false)} className="text-foreground/70 transition-colors hover:text-foreground">
-                        {label}
-                      </Link>
-                    ))}
-                  </nav>
                   
                   <div className="pt-6 space-y-4">
                      <Accordion type="multiple" className="w-full">
@@ -104,11 +97,7 @@ export function Header() {
         </div>
         
         <nav className="hidden md:flex flex-grow justify-center items-center gap-8 text-sm font-medium">
-          {navLinks.map(({ href, label }) => (
-            <Link key={href} href={href} className="text-foreground/70 transition-colors hover:text-foreground">
-              {label}
-            </Link>
-          ))}
+          {[]}
         </nav>
 
         <div className="flex items-center justify-end gap-2 md:w-1/3">
@@ -136,10 +125,3 @@ export function Header() {
     </header>
   );
 }
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '#products', label: 'Shop'},
-  { href: '/pattern-generator', label: 'AI Pattern Generator' },
-  { href: '/about', label: 'About' },
-];
