@@ -6,7 +6,7 @@ import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="border-t bg-card">
+    <footer className="bg-card">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-4 py-12 sm:px-6 lg:px-8">
         <div className="md:col-span-1">
             <h3 className="font-headline text-lg font-semibold">Lakshita Creations</h3>
@@ -42,7 +42,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t">
+      <div>
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
             <p className="text-sm text-muted-foreground text-center md:text-left">
             © {new Date().getFullYear()} Lakshita Creations. All rights reserved.

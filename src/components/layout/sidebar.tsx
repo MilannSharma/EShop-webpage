@@ -35,7 +35,7 @@ const NavItem = ({ item, isOpen }: { item: typeof navItems[0]; isOpen: boolean }
                 animate={{ opacity: 1, width: 'auto' }}
                 exit={{ opacity: 0, width: 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex-grow text-left truncate">
+                className="flex-grow text-left truncate font-bold">
                 {item.title}
             </motion.span>
         )}
@@ -72,7 +72,7 @@ const NavItem = ({ item, isOpen }: { item: typeof navItems[0]; isOpen: boolean }
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="pl-8 py-2 space-y-1 border-l border-sidebar-border ml-6">
+            <div className="pl-8 py-2 space-y-1 ml-6">
                 {item.links.map((link) => (
                 <li key={link.name}>
                     <Link
@@ -81,7 +81,7 @@ const NavItem = ({ item, isOpen }: { item: typeof navItems[0]; isOpen: boolean }
                         "block p-2 rounded-lg text-sm",
                         pathname === link.href
                           ? "bg-sidebar-accent text-sidebar-foreground font-bold"
-                          : "text-sidebar-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                          : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                       )}
                     >
                     {link.name}
@@ -120,7 +120,7 @@ export function Sidebar() {
       onHoverStart={() => !isLocked && setIsHovered(true)}
       onHoverEnd={() => !isLocked && setIsHovered(false)}
       className={cn(
-        "hidden md:flex flex-col flex-shrink-0 border-r bg-sidebar/50 backdrop-blur-lg text-sidebar-foreground h-full z-20 absolute top-0 left-0"
+        "hidden md:flex flex-col flex-shrink-0 bg-sidebar/50 backdrop-blur-lg text-sidebar-foreground h-full z-20 absolute top-0 left-0"
       )}
     >
         <div className={cn("flex items-center h-20 px-4")}>
@@ -138,7 +138,6 @@ export function Sidebar() {
         </nav>
         
         <div className="py-4">
-            <Separator className="bg-sidebar-border" />
         </div>
         
         <div className="pb-4">

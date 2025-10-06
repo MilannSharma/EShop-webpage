@@ -57,7 +57,7 @@ export default function CartView() {
               <span>Shipping</span>
               <span>Free</span>
             </div>
-            <Separator />
+            
             <div className="flex justify-between font-bold text-lg">
               <span>Total</span>
               <span>{formattedCartTotal}</span>

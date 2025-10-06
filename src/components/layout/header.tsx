@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -24,7 +25,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="wfull borderb bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40">
+    <header className="wfull bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-start md:w-1/3">
            
@@ -52,7 +53,7 @@ export function Header() {
                     ))}
                   </nav>
                   
-                  <div className="border-t pt-6 space-y-4">
+                  <div className="pt-6 space-y-4">
                      <Accordion type="multiple" className="w-full">
                         {navItems.map((item) => (
                             <AccordionItem value={item.title} key={item.title}>
@@ -82,7 +83,7 @@ export function Header() {
                     </Accordion>
                   </div>
 
-                  <div className="border-t pt-6 space-y-4">
+                  <div className="pt-6 space-y-4">
                     <CurrencySelector />
                     <Button variant="outline" asChild className="w-full justify-start">
                       <Link href="/account" onClick={() => setIsMobileMenuOpen(false)}>
