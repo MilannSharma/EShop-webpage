@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { User, Menu, Search, Heart } from 'lucide-react';
+import { User, Menu, Search, Heart, ShoppingBag, Glasses, Briefcase, Rug, Smartphone, Watch, Home as HomeIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartIcon from '@/components/cart/cart-icon';
 import {
@@ -10,7 +10,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CurrencySelector from '../currency/currency-selector';
 import {
   Accordion,
@@ -19,6 +19,47 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { navItems } from '@/lib/nav-data';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const animatedIcons = [
+    { icon: ShoppingBag },
+    { icon: Glasses },
+    { icon: Briefcase },
+    { icon: Rug },
+    { icon: Smartphone },
+    { icon: Watch },
+    { icon: HomeIcon },
+];
+
+function AnimatedIcons() {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prevIndex) => (prevIndex + 1) % animatedIcons.length);
+        }, 2000); // Change icon every 2 seconds
+        return () => clearInterval(interval);
+    }, []);
+
+    const Icon = animatedIcons[index].icon;
+
+    return (
+        <div className="relative h-6 w-6 ml-4 hidden md:flex items-center justify-center">
+            <AnimatePresence>
+                <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute"
+                >
+                    <Icon className="h-5 w-5 text-foreground" />
+                </motion.div>
+            </AnimatePresence>
+        </div>
+    );
+}
 
 
 export function Header() {
@@ -94,10 +135,11 @@ export function Header() {
             <img src="https://image2url.com/images/1759617767581-65797a2b-7c3e-4b96-bf8c-3bc2e9327652.png" alt="Logo" className="h-12 w-12 md:h-20 md:w-20" />
             <span className="md:inline font-bold font-headline text-base md:text-lg text-foreground tracking-wider">Lakshita Creation</span>
           </Link>
+          <AnimatedIcons />
         </div>
         
         <nav className="hidden md:flex flex-grow justify-center items-center gap-8 text-sm font-medium">
-          {[]}
+          
         </nav>
 
         <div className="flex items-center justify-end gap-2 md:w-1/3">
