@@ -80,7 +80,7 @@ const NavItem = ({ item, isOpen }: { item: typeof navItems[0]; isOpen: boolean }
                     className={cn(
                         "block p-2 rounded-lg text-sm",
                         pathname === link.href
-                          ? "bg-sidebar-accent text-sidebar-accent-foreground font-semibold"
+                          ? "bg-sidebar-accent text-sidebar-foreground font-bold"
                           : "text-sidebar-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                       )}
                     >
