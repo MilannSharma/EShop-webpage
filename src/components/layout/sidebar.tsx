@@ -23,7 +23,7 @@ const NavItem = ({ item, isOpen }: { item: typeof navItems[0]; isOpen: boolean }
       <button
         onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
         className={cn(
-          "w-full flex items-center gap-x-3 text-sidebar-muted-foreground p-3 rounded-lg hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent duration-150 font-semibold",
+          "w-full flex items-center gap-x-3 text-sidebar-foreground p-3 rounded-lg hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent duration-150 font-semibold",
           !isOpen && "justify-center"
         )}
       >
